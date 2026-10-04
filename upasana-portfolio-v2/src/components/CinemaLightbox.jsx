@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   X, 
   ChevronLeft, 
@@ -18,14 +18,29 @@ export default function CinemaLightbox({
   catalog, 
   onClose, 
   onNavigate, 
+  onSelectIndex,
   onReserve 
 }) {
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const filmstripRef = useRef(null);
 
   useEffect(() => {
     setZoomLevel(1);
   }, [activeItem]);
+
+  const currentIndex = catalog.findIndex(i => i.src === activeItem?.src || i.id === activeItem?.id);
+  const total = catalog.length;
+
+  // Auto-scroll active thumbnail into view in filmstrip
+  useEffect(() => {
+    if (filmstripRef.current && currentIndex !== -1) {
+      const activeThumb = filmstripRef.current.children[currentIndex];
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [currentIndex]);
 
   // Keyboard navigation & escape listener
   useEffect(() => {
@@ -42,9 +57,6 @@ export default function CinemaLightbox({
   }, [activeItem, onNavigate, onClose]);
 
   if (!activeItem) return null;
-
-  const currentIndex = catalog.findIndex(i => i.src === activeItem.src || i.id === activeItem.id);
-  const total = catalog.length;
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -193,7 +205,7 @@ export default function CinemaLightbox({
             )}
 
             {/* Thumbnail Navigation Strip */}
-            <div className="cinema-lb-filmstrip" role="tablist" aria-label="Thumbnail Jump Rail">
+            <div className="cinema-lb-filmstrip" ref={filmstripRef} role="tablist" aria-label="Thumbnail Jump Rail">
               {catalog.map((item, idx) => {
                 const isActive = idx === currentIndex;
                 return (
@@ -202,7 +214,7 @@ export default function CinemaLightbox({
                     role="tab"
                     aria-selected={isActive}
                     className={`cinema-lb-thumb ${isActive ? 'active' : ''}`}
-                    onClick={() => onNavigate(idx - currentIndex)}
+                    onClick={() => onSelectIndex(idx)}
                     title={item.title}
                   >
                     <img src={item.src} alt={item.title} loading="lazy" />

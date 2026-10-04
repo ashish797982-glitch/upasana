@@ -194,11 +194,13 @@ export default function RollingGallery({ onOpenLightbox }) {
     isDraggingRef.current = false;
   };
 
+    // Wheel scroll: only rotates on horizontal delta or shift+wheel, letting normal vertical scroll pass to page
   const handleWheel = (e) => {
-    e.preventDefault();
-    const wheelStep = (e.deltaY || e.deltaX) * 0.08;
-    angleRef.current -= wheelStep;
-    velocityRef.current = -wheelStep * 0.22;
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+      const step = (e.deltaX || e.deltaY) * 0.08;
+      angleRef.current -= step;
+      velocityRef.current = -step * 0.22;
+    }
   };
 
   const handleKeyDown = (e) => {

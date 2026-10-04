@@ -73,7 +73,7 @@ html.lenis, html.lenis body {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto !important;
   background-color: var(--bg);
 }
 
@@ -82,7 +82,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font: 400 15px/1.8 var(--b);
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

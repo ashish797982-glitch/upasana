@@ -415,16 +415,19 @@ function App() {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
-    // Smooth anchor navigation for all internal hashes
+        // Smooth anchor navigation for all internal hashes
     const handleAnchorClick = (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (a) {
         const href = a.getAttribute('href');
-        if (href && href.length > 1) {
+        if (href === '#' || href === '#top') {
+          e.preventDefault();
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else if (href && href.length > 1) {
           e.preventDefault();
           const target = document.querySelector(href);
           if (target) {
-            lenis.scrollTo(target, { offset: -70, duration: 1.35 });
+            lenis.scrollTo(target, { offset: -60, duration: 1.35 });
           }
         }
       }
@@ -561,7 +564,7 @@ function App() {
         <ul>
           {NAV.map((n) => (
             <li key={n}>
-              <a href={`#${n.toLowerCase()}`}>{n.toUpperCase()}</a>
+              <a href={`#${n.toLowerCase().replace(/\s+/g, '-')}`}>{n.toUpperCase()}</a>
             </li>
           ))}
         </ul>
@@ -987,6 +990,7 @@ function App() {
         catalog={masterCatalog}
         onClose={() => setLightboxItem(null)}
         onNavigate={handleLightboxNavigate}
+        onSelectIndex={(idx) => setLightboxItem(masterCatalog[idx])}
         onReserve={(title) => {
           setSelectedService('Bridal Haute Couture: ' + title);
           if (lenisRef.current) {
