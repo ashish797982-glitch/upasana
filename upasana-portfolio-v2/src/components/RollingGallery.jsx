@@ -4,19 +4,15 @@ import {
   RotateCw, 
   ChevronLeft, 
   ChevronRight, 
-  Maximize2, 
   Volume2, 
   VolumeX, 
   Sparkles, 
-  Grid, 
-  CircleDot, 
   Search, 
   Eye, 
   ArrowUpRight,
   X,
   ZoomIn,
   ZoomOut,
-  Compass,
   MoveHorizontal
 } from 'lucide-react';
 
@@ -35,10 +31,9 @@ const CATEGORIES = [
 export default function RollingGallery({ onSelectLook }) {
   const [selectedCat, setSelectedCat] = useState('All Looks');
   const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState('circle'); // 'circle' | 'grid'
   const [direction, setDirection] = useState(1);
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const [tilt, setTilt] = useState({ x: -2, y: 0, z: 0 });
+  const [tilt, setTilt] = useState({ x: -2.5, y: 0, z: 0 });
   const [activeModalLook, setActiveModalLook] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
@@ -48,22 +43,21 @@ export default function RollingGallery({ onSelectLook }) {
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const lastXRef = useRef(0);
-  const lastMoveTimeRef = useRef(0);
   const stageRef = useRef(null);
   const audioCtxRef = useRef(null);
   const lastTickCardRef = useRef(-1);
 
-  // Medium dimensions calibrated for ergonomic swiping and clear visibility
-  const [cardWidth, setCardWidth] = useState(175);
+  // Medium dimensions calibrated for ergonomic finger swiping and clear visibility
+  const [cardWidth, setCardWidth] = useState(170);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setCardWidth(135);
+        setCardWidth(130);
       } else if (window.innerWidth < 1024) {
-        setCardWidth(155);
+        setCardWidth(150);
       } else {
-        setCardWidth(175);
+        setCardWidth(170);
       }
     };
     handleResize();
@@ -89,7 +83,7 @@ export default function RollingGallery({ onSelectLook }) {
   const radius = useMemo(() => {
     if (totalCards <= 1) return 380;
     const rad = (cardWidth / 2) / Math.tan(Math.PI / totalCards);
-    return Math.max(380, Math.min(1600, Math.round(rad) + 15));
+    return Math.max(380, Math.min(1500, Math.round(rad) + 15));
   }, [totalCards, cardWidth]);
 
   // Audio tick via Web Audio API
@@ -107,8 +101,8 @@ export default function RollingGallery({ onSelectLook }) {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(820, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(410, ctx.currentTime + 0.035);
+      osc.frequency.setValueAtTime(840, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(420, ctx.currentTime + 0.035);
       gain.gain.setValueAtTime(0.04, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
       osc.connect(gain);
@@ -118,28 +112,28 @@ export default function RollingGallery({ onSelectLook }) {
     } catch (e) {}
   }, [soundEnabled]);
 
-  // Full continuous smooth rolling animation loop:
-  // - Obeys its own rolling axis in slow smooth motion (0.11 deg/frame)
-  // - When a visitor touches or drags with fingers or mouse, it follows immediately
-  // - When released, smoothly blends back into its own rolling axis with zero abrupt stops
+  // Continuous slow, smooth rolling animation:
+  // - Obeys its own rolling axis in slow smooth motion (~0.095 deg/frame)
+  // - Any visitor can roll/swipe with fingers or mouse cursor
+  // - When released, smoothly blends back into its own rolling axis with zero stops
   useEffect(() => {
     let animId;
-    const baseSpeed = 0.11 * direction; // Slow, luxurious, continuous rotation
+    const baseSpeed = 0.095 * direction; // Slow, luxurious, continuous cinematic pace
 
     const loop = (stamp) => {
       // Dynamic organic wave along rolling axis for rich 3D life
-      const waveX = -2 + Math.sin(stamp * 0.0006) * 1.8;
-      const waveZ = Math.cos(stamp * 0.0004) * 1.2;
+      const waveX = -2.2 + Math.sin(stamp * 0.0006) * 1.8;
+      const waveZ = Math.cos(stamp * 0.0004) * 1.4;
 
       if (isDraggingRef.current) {
-        // Visitor is actively swiping with finger or mouse cursor
+        // Visitor is actively swiping with finger or dragging with mouse
       } else {
         if (Math.abs(velocityRef.current) > 0.01) {
-          // Decay momentum towards base slow rolling speed
+          // Smooth momentum decay transitioning into autonomous rolling axis
           angleRef.current += velocityRef.current;
-          velocityRef.current = velocityRef.current * 0.94 + baseSpeed * 0.06;
+          velocityRef.current = velocityRef.current * 0.95 + baseSpeed * 0.05;
         } else {
-          // Obey continuous rolling axis in slow smooth motion
+          // Obeys continuous rolling axis in full slow smooth motion
           angleRef.current += baseSpeed;
         }
       }
@@ -168,12 +162,11 @@ export default function RollingGallery({ onSelectLook }) {
     return () => cancelAnimationFrame(animId);
   }, [direction, totalCards, anglePerCard, playTickSound]);
 
-  // Finger swipe & mouse drag handlers
+  // Touch and mouse drag handlers for effortless swiping
   const handlePointerDown = (e) => {
     isDraggingRef.current = true;
     startXRef.current = e.clientX;
     lastXRef.current = e.clientX;
-    lastMoveTimeRef.current = performance.now();
     velocityRef.current = 0;
   };
 
@@ -183,7 +176,7 @@ export default function RollingGallery({ onSelectLook }) {
         const rect = stageRef.current.getBoundingClientRect();
         const offsetX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
         const offsetY = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-        setTilt((t) => ({ ...t, userX: -offsetY * 3, userY: offsetX * 3 }));
+        setTilt((t) => ({ ...t, userX: -offsetY * 2.5, userY: offsetX * 2.5 }));
       }
       return;
     }
@@ -191,22 +184,21 @@ export default function RollingGallery({ onSelectLook }) {
     const deltaX = currentX - lastXRef.current;
     lastXRef.current = currentX;
 
-    const sensitivity = 0.36; // Snappy, direct finger/cursor response
+    const sensitivity = 0.38; // Direct, instantaneous finger & cursor response
     angleRef.current += deltaX * sensitivity;
-    velocityRef.current = deltaX * sensitivity * 0.85;
+    velocityRef.current = deltaX * sensitivity * 0.88;
   };
 
   const handlePointerUp = () => {
     isDraggingRef.current = false;
   };
 
-  // Mouse wheel rotation
+  // Wheel tilt / scroll
   const handleWheel = (e) => {
-    if (viewMode !== 'circle') return;
     e.preventDefault();
-    const wheelStep = (e.deltaY || e.deltaX) * 0.1;
+    const wheelStep = (e.deltaY || e.deltaX) * 0.08;
     angleRef.current -= wheelStep;
-    velocityRef.current = -wheelStep * 0.25;
+    velocityRef.current = -wheelStep * 0.22;
   };
 
   // Keyboard navigation
@@ -267,94 +259,75 @@ export default function RollingGallery({ onSelectLook }) {
   return (
     <section 
       className="rolling-gallery-section"
-      id="client-showcase"
+      id="all-looks"
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      aria-label="3D Rolling Circular Client Portfolio"
+      aria-label="All Looks 3D Rolling Circular Showcase"
       role="region"
       aria-roledescription="carousel"
     >
+      {/* SECTION HEADER */}
       <div className="rg-header">
         <div className="rg-title-block">
           <div className="rg-badge-pill">
             <Sparkles size={13} color="var(--gold-light)" />
-            <span>360° CONTINUOUS CIRCULAR MOTION // 59 MASTERPIECES</span>
+            <span>ALL LOOKS ARCHIVE • 59 MASTERPIECES IN 3D MOTION</span>
           </div>
           <h2 className="rg-heading">
-            <span className="s">Authentic Artistry.</span>
+            <span className="s">All Signature Looks.</span>
             <br />
-            <span className="g">Smooth Circular Roll.</span>
+            <span className="g">Rolling Circular Motion.</span>
           </h2>
           <p className="rg-subtitle">
-            59 real client bridal looks, royal couture, and masterclass transformations revolving in continuous slow, smooth motion. Swipe with your fingers or mouse cursor to roll freely in any direction.
+            All 59 authentic client looks rolling in slow, continuous smooth motion. Anyone can swipe with fingers or mouse cursor to roll freely in any direction.
           </p>
         </div>
 
+        {/* CONTROLS (NO PAUSE BUTTON) */}
         <div className="rg-controls-deck">
-          <div className="rg-control-group" role="radiogroup" aria-label="Gallery View Mode">
+          <div className="rg-control-group" aria-label="Circular Rolling Controls">
             <button 
-              className={'rg-btn ' + (viewMode === 'circle' ? 'active' : '')}
-              onClick={() => setViewMode('circle')}
-              aria-label="3D Circular Rolling Animation Mode"
-              title="3D Circular Rolling Ring"
+              className="rg-icon-btn" 
+              onClick={() => stepRotate(1)}
+              aria-label="Roll previous look"
+              title="Roll Previous (Left Arrow)"
             >
-              <CircleDot size={14} /> <span>3D Circle Roll</span>
+              <ChevronLeft size={16} />
             </button>
+
             <button 
-              className={'rg-btn ' + (viewMode === 'grid' ? 'active' : '')}
-              onClick={() => setViewMode('grid')}
-              aria-label="Accessible Grid View"
-              title="Complete 59-Image Grid"
+              className="rg-icon-btn" 
+              onClick={() => stepRotate(-1)}
+              aria-label="Roll next look"
+              title="Roll Next (Right Arrow)"
             >
-              <Grid size={14} /> <span>All 59 Grid</span>
+              <ChevronRight size={16} />
+            </button>
+
+            <button 
+              className="rg-icon-btn" 
+              onClick={() => setDirection((d) => -d)}
+              aria-label="Reverse rolling direction"
+              title="Reverse Direction"
+            >
+              {direction === 1 ? <RotateCw size={15} /> : <RotateCcw size={15} />}
+            </button>
+
+            <button 
+              className={'rg-icon-btn ' + (soundEnabled ? 'active' : '')}
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              aria-label={soundEnabled ? 'Disable haptic sound' : 'Enable haptic sound'}
+              title={soundEnabled ? 'Sound Enabled' : 'Sound Muted'}
+            >
+              {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
             </button>
           </div>
-
-          {viewMode === 'circle' && (
-            <div className="rg-control-group" aria-label="Animation Controls">
-              <button 
-                className="rg-icon-btn" 
-                onClick={() => stepRotate(1)}
-                aria-label="Roll previous look"
-                title="Roll Previous (Left Arrow)"
-              >
-                <ChevronLeft size={16} />
-              </button>
-
-              <button 
-                className="rg-icon-btn" 
-                onClick={() => stepRotate(-1)}
-                aria-label="Roll next look"
-                title="Roll Next (Right Arrow)"
-              >
-                <ChevronRight size={16} />
-              </button>
-
-              <button 
-                className="rg-icon-btn" 
-                onClick={() => setDirection((d) => -d)}
-                aria-label="Reverse rolling direction"
-                title="Reverse Direction"
-              >
-                {direction === 1 ? <RotateCw size={15} /> : <RotateCcw size={15} />}
-              </button>
-
-              <button 
-                className={'rg-icon-btn ' + (soundEnabled ? 'active' : '')}
-                onClick={() => setSoundEnabled(!soundEnabled)}
-                aria-label={soundEnabled ? 'Disable haptic audio tick' : 'Enable haptic audio tick'}
-                title={soundEnabled ? 'Sound Enabled' : 'Sound Muted'}
-              >
-                {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
-              </button>
-            </div>
-          )}
         </div>
       </div>
 
-      {/* FILTER PILLS & SEARCH */}
+      {/* CATEGORY FILTER PILLS & SEARCH */}
       <div className="rg-filter-bar">
-        <div className="rg-pills-row" role="tablist" aria-label="Filter By Artistry Discipline">
+        <div className="rg-pills-row" role="tablist" aria-label="Filter Looks By Discipline">
           {CATEGORIES.map((cat) => {
             const count = cat === 'All Looks' 
               ? clientData.length 
@@ -379,7 +352,7 @@ export default function RollingGallery({ onSelectLook }) {
           <Search size={14} color="var(--muted)" />
           <input 
             type="text" 
-            placeholder="Search 59 looks..." 
+            placeholder="Search all 59 looks..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             aria-label="Search looks by keyword"
@@ -393,161 +366,108 @@ export default function RollingGallery({ onSelectLook }) {
       </div>
 
       {/* 3D CIRCULAR ROLLING STAGE (MEDIUM SIZE) */}
-      {viewMode === 'circle' && (
+      <div 
+        className="rg-stage-wrapper"
+        ref={stageRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onWheel={handleWheel}
+      >
+        <div className="rg-spotlight-top" />
+        <div className="rg-spotlight-bottom" />
+        
         <div 
-          className="rg-stage-wrapper"
-          ref={stageRef}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
-          onWheel={handleWheel}
-        >
-          <div className="rg-spotlight-top" />
-          <div className="rg-spotlight-bottom" />
-          
-          <div 
-            className="rg-pedestal-ring" 
-            style={{ 
-              width: Math.min(radius * 1.85, 1200) + 'px', 
-              height: Math.min(radius * 1.85, 1200) + 'px' 
-            }} 
-          />
+          className="rg-pedestal-ring" 
+          style={{ 
+            width: Math.min(radius * 1.85, 1200) + 'px', 
+            height: Math.min(radius * 1.85, 1200) + 'px' 
+          }} 
+        />
 
+        <div 
+          className="rg-cylinder-stage"
+          style={{
+            perspective: Math.max(1050, radius * 1.35) + 'px'
+          }}
+        >
           <div 
-            className="rg-cylinder-stage"
+            className="rg-cylinder-ring"
             style={{
-              perspective: Math.max(1050, radius * 1.35) + 'px'
+              width: cardWidth + 'px',
+              height: Math.round(cardWidth * 1.45) + 'px',
+              transform: 'rotateX(' + tilt.x + 'deg) rotateZ(' + tilt.z + 'deg) rotateY(' + currentAngle + 'deg)',
+              transition: isDraggingRef.current ? 'none' : 'transform 0.05s ease-out'
             }}
           >
-            <div 
-              className="rg-cylinder-ring"
-              style={{
-                width: cardWidth + 'px',
-                height: Math.round(cardWidth * 1.45) + 'px',
-                transform: 'rotateX(' + tilt.x + 'deg) rotateZ(' + tilt.z + 'deg) rotateY(' + currentAngle + 'deg)',
-                transition: isDraggingRef.current ? 'none' : 'transform 0.06s ease-out'
-              }}
-            >
-              {filteredImages.map((item, index) => {
-                const baseAngle = index * anglePerCard;
-                const relAngle = ((baseAngle + currentAngle) % 360 + 540) % 360 - 180;
-                const rad = (relAngle * Math.PI) / 180;
-                const cosA = Math.cos(rad);
-                const isFront = cosA > 0;
-                const isCenter = Math.abs(relAngle) < 14;
+            {filteredImages.map((item, index) => {
+              const baseAngle = index * anglePerCard;
+              const relAngle = ((baseAngle + currentAngle) % 360 + 540) % 360 - 180;
+              const rad = (relAngle * Math.PI) / 180;
+              const cosA = Math.cos(rad);
+              const isFront = cosA > 0;
+              const isCenter = Math.abs(relAngle) < 14;
 
-                const opacity = cosA > 0.1 ? 0.5 + cosA * 0.5 : Math.max(0.12, 0.5 + cosA * 0.45);
-                const scale = isCenter ? 1.06 : 1;
+              const opacity = cosA > 0.1 ? 0.5 + cosA * 0.5 : Math.max(0.12, 0.5 + cosA * 0.45);
+              const scale = isCenter ? 1.06 : 1;
 
-                return (
-                  <div
-                    key={item.id}
-                    className={'rg-cylinder-card ' + (isCenter ? 'is-center ' : '') + (isFront ? 'is-front ' : 'is-back ')}
-                    style={{
-                      width: cardWidth + 'px',
-                      height: Math.round(cardWidth * 1.45) + 'px',
-                      transform: 'rotateY(' + baseAngle + 'deg) translateZ(' + radius + 'px) scale(' + scale + ')',
-                      opacity: opacity,
-                      filter: !isFront ? 'blur(1.5px) brightness(0.65)' : isCenter ? 'brightness(1.1)' : 'none'
-                    }}
-                    onClick={() => handleCardClick(item, index)}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={'Look ' + (index + 1) + ' of ' + totalCards + ': ' + item.title + ', ' + item.cat + '. Click to inspect.'}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        handleCardClick(item, index);
-                      }
-                    }}
-                  >
-                    <div className="rg-card-inner">
-                      <img 
-                        src={'/images/clients/' + item.file} 
-                        alt={item.alt}
-                        loading={index < 12 ? 'eager' : 'lazy'}
-                        draggable={false}
-                      />
-                      <div className="rg-card-glass-glow" />
-                      
-                      <div className="rg-card-overlay">
-                        <div className="rg-card-num">
-                          #{String(index + 1).padStart(2, '0')} // {item.cat}
-                        </div>
-                        <h4 className="rg-card-title">{item.title}</h4>
-                        <div className="rg-card-inspect-hint">
-                          <Eye size={11} /> <span>CINEMA VIEW</span>
-                        </div>
+              return (
+                <div
+                  key={item.id}
+                  className={'rg-cylinder-card ' + (isCenter ? 'is-center ' : '') + (isFront ? 'is-front ' : 'is-back ')}
+                  style={{
+                    width: cardWidth + 'px',
+                    height: Math.round(cardWidth * 1.45) + 'px',
+                    transform: 'rotateY(' + baseAngle + 'deg) translateZ(' + radius + 'px) scale(' + scale + ')',
+                    opacity: opacity,
+                    filter: !isFront ? 'blur(1.5px) brightness(0.65)' : isCenter ? 'brightness(1.1)' : 'none'
+                  }}
+                  onClick={() => handleCardClick(item, index)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={'Look ' + (index + 1) + ' of ' + totalCards + ': ' + item.title + ', ' + item.cat + '. Click to inspect.'}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleCardClick(item, index);
+                    }
+                  }}
+                >
+                  <div className="rg-card-inner">
+                    <img 
+                      src={'/images/clients/' + item.file} 
+                      alt={item.alt}
+                      loading={index < 12 ? 'eager' : 'lazy'}
+                      draggable={false}
+                    />
+                    <div className="rg-card-glass-glow" />
+                    
+                    <div className="rg-card-overlay">
+                      <div className="rg-card-num">
+                        #{String(index + 1).padStart(2, '0')} // {item.cat}
                       </div>
-
-                      <div className="rg-card-border" />
+                      <h4 className="rg-card-title">{item.title}</h4>
+                      <div className="rg-card-inspect-hint">
+                        <Eye size={11} /> <span>CINEMA VIEW</span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
 
-          <div className="rg-drag-hint">
-            <MoveHorizontal size={13} color="var(--gold)" />
-            <span>SWIPE FINGERS OR DRAG CURSOR TO ROLL • CLICK TO ENLARGE</span>
-          </div>
-        </div>
-      )}
-
-      {/* GRID VIEW */}
-      {viewMode === 'grid' && (
-        <div className="rg-grid-container" role="region" aria-label="Complete 59 Looks Grid">
-          <div className="rg-grid-header">
-            <span className="lbl">// ARCHIVE CATALOG</span>
-            <span style={{ color: 'var(--muted)', fontSize: 13 }}>
-              Showing {filteredImages.length} Curated Looks
-            </span>
-          </div>
-
-          <div className="rg-grid">
-            {filteredImages.map((item, idx) => (
-              <div 
-                key={item.id}
-                className="rg-grid-card"
-                onClick={() => {
-                  setActiveModalLook(item);
-                  setZoomLevel(1);
-                }}
-                role="button"
-                tabIndex={0}
-                aria-label={item.title + ' - ' + item.cat}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setActiveModalLook(item);
-                    setZoomLevel(1);
-                  }
-                }}
-              >
-                <div className="rg-grid-img-wrap">
-                  <img 
-                    src={'/images/clients/' + item.file} 
-                    alt={item.alt} 
-                    loading="lazy" 
-                  />
-                  <div className="rg-grid-overlay">
-                    <span className="rg-grid-badge">#{String(idx + 1).padStart(2, '0')}</span>
-                    <div>
-                      <div className="rg-grid-cat">{item.cat}</div>
-                      <div className="rg-grid-title">{item.title}</div>
-                    </div>
-                    <div className="rg-grid-expand"><Maximize2 size={14} /></div>
+                    <div className="rg-card-border" />
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
-      )}
 
-      {/* LIGHTBOX MODAL */}
+        <div className="rg-drag-hint">
+          <MoveHorizontal size={13} color="var(--gold)" />
+          <span>SWIPE FINGERS OR DRAG CURSOR TO ROLL • CLICK LOOK TO ENLARGE</span>
+        </div>
+      </div>
+
+      {/* ACCESSIBLE LIGHTBOX MODAL */}
       {activeModalLook && (
         <div 
           className="rg-lightbox-backdrop"

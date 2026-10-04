@@ -424,35 +424,35 @@ nav li a:hover::after {
   position: absolute;
   right: 0;
   bottom: 0;
-  /* Genuine large editorial footprint */
-  width: clamp(520px, 48vw, 840px);
+  top: 0;
+  /* Large full size video footprint matching true 9:16 video presence */
+  width: clamp(620px, 58vw, 1050px);
   height: 100vh;
   height: 100svh;
   z-index: 2;
   overflow: hidden;
   pointer-events: none;
 
-  /* Multi-directional cinematic feathering */
+  /* Multi-directional cinematic soft feathering */
   -webkit-mask-image: 
-    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 8%, #000 24%, #000 100%),
-    linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.4) 92%, transparent 100%);
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 10%, #000 28%, #000 100%),
+    linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,0.4) 94%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image: 
-    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 8%, #000 24%, #000 100%),
-    linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.4) 92%, transparent 100%);
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 10%, #000 28%, #000 100%),
+    linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,0.4) 94%, transparent 100%);
   mask-composite: intersect;
 }
 
-/* Magnified Video Framing - Brings Subject Prominently to Forefront */
+/* Full Size Video Framing - Displays Subject in True Proportions without Artificial Zoom Cropping */
 .model video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 18%;
-  transform: scale(1.52);
-  transform-origin: center 20%;
-  filter: contrast(1.05) brightness(1.02);
+  object-position: center 20%;
+  transform: scale(1.0);
+  filter: contrast(1.06) brightness(1.02);
 }
 
 /* Video Status Tag */
@@ -1794,7 +1794,7 @@ footer {
 .rg-stage-wrapper {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 490px;
   margin: 0 auto;
   overflow: hidden;
   cursor: grab;
@@ -2342,4 +2342,12 @@ footer {
     width: 100%;
     justify-content: flex-end;
   }
+}
+
+/* CINEMATIC FLOATING DUST PARTICLES */
+.cinematic-dust {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 }

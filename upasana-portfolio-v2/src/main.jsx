@@ -30,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
    PORTFOLIO DATA & CONTENT
    ========================================================================== */
 const NAME = 'Upasana Kumari';
-const NAV = ['About', 'Work', 'Showcase', 'Skills', 'Journey', 'Contact'];
+const NAV = ['About', 'Work', 'All Looks', 'Skills', 'Journey', 'Contact'];
 
 const STATS = [
   { val: '150+', label: 'Looks Curated', detail: 'Bridal & High Fashion' },
@@ -319,6 +319,65 @@ function BentoCard({ s, i }) {
 /* ==========================================================================
    MAIN CINEMATIC APPLICATION
    ========================================================================== */
+
+function CinematicDust() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animId;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', handleResize);
+
+    const particles = Array.from({ length: 48 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2 + 0.8,
+      speedY: Math.random() * 0.35 + 0.12,
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.5 + 0.2,
+      pulse: Math.random() * Math.PI
+    }));
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach((p) => {
+        p.y -= p.speedY;
+        p.x += p.speedX;
+        p.pulse += 0.02;
+        if (p.y < -10) p.y = height + 10;
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+
+        const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(217, 169, 58, ' + currentOpacity + ')';
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = 'rgba(217, 169, 58, 0.4)';
+        ctx.fill();
+      });
+      animId = requestAnimationFrame(render);
+    };
+
+    render();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animId);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="cinematic-dust" aria-hidden="true" />;
+}
+
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [lightbox, setLightbox] = useState(null);
@@ -404,6 +463,7 @@ function App() {
 
       {/* Cinematic Custom Cursor */}
       <Cursor />
+      <CinematicDust />
 
       {/* Luxury Navigation Header */}
       <nav className={scrolled ? 'sc' : ''}>
