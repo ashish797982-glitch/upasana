@@ -9,12 +9,7 @@ import {
   Sparkles, 
   Search, 
   Eye, 
-  ArrowUpRight,
-  X,
-  ZoomIn,
-  ZoomOut,
-  MoveHorizontal,
-  Compass
+  MoveHorizontal
 } from 'lucide-react';
 
 import clientData from '../clientCatalog.json';
@@ -29,14 +24,12 @@ const CATEGORIES = [
   'Precision Nails & Detail'
 ];
 
-export default function RollingGallery({ onSelectLook }) {
+export default function RollingGallery({ onOpenLightbox }) {
   const [selectedCat, setSelectedCat] = useState('All Looks');
   const [searchQuery, setSearchQuery] = useState('');
   const [direction, setDirection] = useState(1);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [tilt, setTilt] = useState({ x: -2.2, y: 0, z: 0 });
-  const [activeModalLook, setActiveModalLook] = useState(null);
-  const [zoomLevel, setZoomLevel] = useState(1);
 
   const [currentAngle, setCurrentAngle] = useState(0);
   const angleRef = useRef(0);
@@ -83,7 +76,6 @@ export default function RollingGallery({ onSelectLook }) {
   const totalCards = filteredImages.length;
   const anglePerCard = totalCards > 0 ? 360 / totalCards : 0;
 
-  // Medium cylinder radius
   const radius = useMemo(() => {
     if (totalCards <= 1) return 420;
     const rad = (cardWidth / 2) / Math.tan(Math.PI / totalCards);
@@ -97,7 +89,6 @@ export default function RollingGallery({ onSelectLook }) {
     return Math.round(normAngle / anglePerCard) % totalCards;
   }, [currentAngle, anglePerCard, totalCards]);
 
-  // Keep thumbnail rail in sync with current centered look
   useEffect(() => {
     if (railRef.current) {
       const activeEl = railRef.current.children[centeredIdx];
@@ -107,7 +98,6 @@ export default function RollingGallery({ onSelectLook }) {
     }
   }, [centeredIdx]);
 
-  // Audio tick via Web Audio API
   const playTickSound = useCallback(() => {
     if (!soundEnabled) return;
     try {
@@ -136,15 +126,13 @@ export default function RollingGallery({ onSelectLook }) {
   // Continuous slow, smooth rolling animation with organic 3D wave
   useEffect(() => {
     let animId;
-    const baseSpeed = 0.088 * direction; // Relaxed slow, smooth cinematic drift
+    const baseSpeed = 0.088 * direction;
 
     const loop = (stamp) => {
       const waveX = -2.2 + Math.sin(stamp * 0.0006) * 1.6;
       const waveZ = Math.cos(stamp * 0.0004) * 1.3;
 
-      if (isDraggingRef.current) {
-        // Visitor is actively swiping with finger or dragging with mouse
-      } else {
+      if (!isDraggingRef.current) {
         if (Math.abs(velocityRef.current) > 0.01) {
           angleRef.current += velocityRef.current;
           velocityRef.current = velocityRef.current * 0.95 + baseSpeed * 0.05;
@@ -159,7 +147,6 @@ export default function RollingGallery({ onSelectLook }) {
         z: waveZ
       }));
 
-      // Audio tick trigger
       if (totalCards > 0 && anglePerCard > 0) {
         const normAngle = ((-angleRef.current % 360) + 360) % 360;
         const currentCardIdx = Math.round(normAngle / anglePerCard) % totalCards;
@@ -177,7 +164,6 @@ export default function RollingGallery({ onSelectLook }) {
     return () => cancelAnimationFrame(animId);
   }, [direction, totalCards, anglePerCard, playTickSound]);
 
-  // Touch and mouse drag handlers for effortless swiping
   const handlePointerDown = (e) => {
     isDraggingRef.current = true;
     startXRef.current = e.clientX;
@@ -199,7 +185,7 @@ export default function RollingGallery({ onSelectLook }) {
     const deltaX = currentX - lastXRef.current;
     lastXRef.current = currentX;
 
-    const sensitivity = 0.38; // Direct, instantaneous finger & cursor response
+    const sensitivity = 0.38;
     angleRef.current += deltaX * sensitivity;
     velocityRef.current = deltaX * sensitivity * 0.88;
   };
@@ -208,7 +194,6 @@ export default function RollingGallery({ onSelectLook }) {
     isDraggingRef.current = false;
   };
 
-  // Wheel tilt / scroll
   const handleWheel = (e) => {
     e.preventDefault();
     const wheelStep = (e.deltaY || e.deltaX) * 0.08;
@@ -216,9 +201,7 @@ export default function RollingGallery({ onSelectLook }) {
     velocityRef.current = -wheelStep * 0.22;
   };
 
-  // Keyboard navigation
   const handleKeyDown = (e) => {
-    if (activeModalLook) return;
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       stepRotate(1);
@@ -242,38 +225,15 @@ export default function RollingGallery({ onSelectLook }) {
 
   const handleCardClick = (item, index) => {
     rotateToLook(index);
-    setActiveModalLook(item);
-    setZoomLevel(1);
+    if (onOpenLightbox) {
+      onOpenLightbox({
+        id: item.id,
+        src: '/images/clients/' + item.file,
+        title: item.title,
+        cat: item.cat
+      });
+    }
   };
-
-  const handleModalNext = (e) => {
-    e?.stopPropagation();
-    if (!activeModalLook) return;
-    const currentIdx = filteredImages.findIndex((it) => it.id === activeModalLook.id);
-    const nextIdx = (currentIdx + 1) % filteredImages.length;
-    setActiveModalLook(filteredImages[nextIdx]);
-    setZoomLevel(1);
-  };
-
-  const handleModalPrev = (e) => {
-    e?.stopPropagation();
-    if (!activeModalLook) return;
-    const currentIdx = filteredImages.findIndex((it) => it.id === activeModalLook.id);
-    const prevIdx = (currentIdx - 1 + filteredImages.length) % filteredImages.length;
-    setActiveModalLook(filteredImages[prevIdx]);
-    setZoomLevel(1);
-  };
-
-  useEffect(() => {
-    const handleModalKeys = (e) => {
-      if (!activeModalLook) return;
-      if (e.key === 'Escape') setActiveModalLook(null);
-      if (e.key === 'ArrowRight') handleModalNext();
-      if (e.key === 'ArrowLeft') handleModalPrev();
-    };
-    window.addEventListener('keydown', handleModalKeys);
-    return () => window.removeEventListener('keydown', handleModalKeys);
-  }, [activeModalLook, filteredImages]);
 
   const currentLook = filteredImages[centeredIdx];
 
@@ -287,7 +247,6 @@ export default function RollingGallery({ onSelectLook }) {
       role="region"
       aria-roledescription="carousel"
     >
-      {/* SECTION HEADER */}
       <div className="rg-header">
         <div className="rg-title-block">
           <div className="rg-badge-pill">
@@ -299,11 +258,10 @@ export default function RollingGallery({ onSelectLook }) {
             <span className="g">Rolling 3D Motion.</span>
           </h2>
           <p className="rg-subtitle">
-            All 59 authentic client looks rolling in slow, continuous smooth motion. Anyone can swipe with fingers, drag with cursor, or click the side navigation arrows and thumbnails below to go through every look.
+            All 59 authentic client looks rolling in slow, continuous smooth motion. Anyone can swipe with fingers, drag with cursor, or click the side navigation arrows and thumbnails below to inspect in high-definition cinema view.
           </p>
         </div>
 
-        {/* CONTROLS (NO PAUSE BUTTON) */}
         <div className="rg-controls-deck">
           <div className="rg-control-group" aria-label="Circular Rolling Controls">
             <button 
@@ -345,7 +303,6 @@ export default function RollingGallery({ onSelectLook }) {
         </div>
       </div>
 
-      {/* CATEGORY FILTER PILLS & SEARCH */}
       <div className="rg-filter-bar">
         <div className="rg-pills-row" role="tablist" aria-label="Filter Looks By Discipline">
           {CATEGORIES.map((cat) => {
@@ -385,7 +342,6 @@ export default function RollingGallery({ onSelectLook }) {
         </div>
       </div>
 
-      {/* 3D CIRCULAR ROLLING STAGE (195px x 280px CARDS, 530px STAGE, PROMINENT SIDE ARROWS) */}
       <div 
         className="rg-stage-wrapper"
         ref={stageRef}
@@ -398,7 +354,6 @@ export default function RollingGallery({ onSelectLook }) {
         <div className="rg-spotlight-top" />
         <div className="rg-spotlight-bottom" />
         
-        {/* Floating Side Navigation Arrows for Instant Access */}
         <button 
           className="rg-stage-nav rg-stage-nav-prev" 
           onClick={(e) => { e.stopPropagation(); stepRotate(1); }}
@@ -417,7 +372,6 @@ export default function RollingGallery({ onSelectLook }) {
           <ChevronRight size={24} />
         </button>
 
-        {/* Concentric Dual Pedestal Light Rings */}
         <div className="rg-pedestal-outer" />
         <div className="rg-pedestal-ring" />
 
@@ -427,7 +381,6 @@ export default function RollingGallery({ onSelectLook }) {
             perspective: '1100px'
           }}
         >
-          {/* Centered with translateZ(-radius - 42px) for authentic, prominent medium size (195px x 280px) */}
           <div 
             className="rg-cylinder-ring"
             style={{
@@ -506,7 +459,6 @@ export default function RollingGallery({ onSelectLook }) {
         </div>
       </div>
 
-      {/* ACCESSIBILITY JUMP STRIP: QUICK THUMBNAIL RAIL TO GO THROUGH ALL IMAGES */}
       <div className="rg-bottom-rail">
         <div className="rg-rail-header">
           <div className="rg-active-indicator">
@@ -538,125 +490,6 @@ export default function RollingGallery({ onSelectLook }) {
           })}
         </div>
       </div>
-
-      {/* ACCESSIBLE LIGHTBOX MODAL */}
-      {activeModalLook && (
-        <div 
-          className="rg-lightbox-backdrop"
-          onClick={() => setActiveModalLook(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={'Cinema View: ' + activeModalLook.title}
-        >
-          <div 
-            className="rg-lightbox-body"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="rg-lb-toolbar">
-              <div className="rg-lb-info">
-                <span className="rg-lb-pill">{activeModalLook.cat.toUpperCase()}</span>
-                <h3 className="rg-lb-title">{activeModalLook.title}</h3>
-                <span className="rg-lb-count">
-                  LOOK {filteredImages.findIndex(i => i.id === activeModalLook.id) + 1} OF {filteredImages.length}
-                </span>
-              </div>
-
-              <div className="rg-lb-actions">
-                <button 
-                  className="rg-lb-btn"
-                  onClick={() => setZoomLevel((z) => (z === 1 ? 1.75 : z === 1.75 ? 2.5 : 1))}
-                  title="Toggle Zoom Level (1x / 1.75x / 2.5x)"
-                  aria-label="Toggle Zoom"
-                >
-                  {zoomLevel > 1 ? <ZoomOut size={16} /> : <ZoomIn size={16} />}
-                  <span>{zoomLevel}x</span>
-                </button>
-
-                <a 
-                  className="rg-lb-cta"
-                  href="#contact"
-                  onClick={() => {
-                    setActiveModalLook(null);
-                    if (onSelectLook) onSelectLook(activeModalLook.title);
-                  }}
-                >
-                  <span>RESERVE THIS LOOK</span>
-                  <ArrowUpRight size={14} />
-                </a>
-
-                <button 
-                  className="rg-lb-btn rg-lb-close"
-                  onClick={() => setActiveModalLook(null)}
-                  aria-label="Close lightbox (Esc)"
-                  title="Close (Esc)"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-            </div>
-
-            <div className="rg-lb-viewport">
-              <button 
-                className="rg-lb-nav rg-lb-nav-prev"
-                onClick={handleModalPrev}
-                aria-label="Previous client look (Left Arrow)"
-                title="Previous Look (Left Arrow)"
-              >
-                <ChevronLeft size={28} />
-              </button>
-
-              <div 
-                className="rg-lb-img-container"
-                style={{
-                  cursor: zoomLevel > 1 ? 'grab' : 'zoom-in'
-                }}
-                onClick={() => setZoomLevel((z) => (z === 1 ? 1.75 : 1))}
-              >
-                <img 
-                  src={'/images/clients/' + activeModalLook.file} 
-                  alt={activeModalLook.alt}
-                  style={{
-                    transform: 'scale(' + zoomLevel + ')',
-                    transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-                  }}
-                />
-              </div>
-
-              <button 
-                className="rg-lb-nav rg-lb-nav-next"
-                onClick={handleModalNext}
-                aria-label="Next client look (Right Arrow)"
-                title="Next Look (Right Arrow)"
-              >
-                <ChevronRight size={28} />
-              </button>
-            </div>
-
-            <div className="rg-lb-filmstrip-wrap">
-              <div className="rg-lb-filmstrip" role="tablist" aria-label="Thumbnail Strip">
-                {filteredImages.map((thumb) => {
-                  const isActive = thumb.id === activeModalLook.id;
-                  return (
-                    <button
-                      key={thumb.id}
-                      role="tab"
-                      aria-selected={isActive}
-                      className={'rg-film-thumb ' + (isActive ? 'active' : '')}
-                      onClick={() => {
-                        setActiveModalLook(thumb);
-                        setZoomLevel(1);
-                      }}
-                      title={thumb.title}
-                    >
-                      <img src={'/images/clients/' + thumb.file} alt={thumb.title} loading="lazy" />
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

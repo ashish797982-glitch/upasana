@@ -1,0 +1,873 @@
+[
+  {
+    "id": "upasana-portrait",
+    "src": "/images/upasana.jpg",
+    "title": "Upasana Kumari — UK International London Beauty School Master Award Winner",
+    "cat": "Master Artist & Founder",
+    "d": "Honored with the prestigious UK International London Beauty School award for outstanding technical artistry, prosthetic SFX mastery, HD bridal airbrushing, and international editorial standards.",
+    "tags": [
+      "UK International Certified",
+      "London Beauty School",
+      "Award Winner",
+      "Master Instructor"
+    ]
+  },
+  {
+    "id": "work-01",
+    "src": "/images/portfolio-24.jpg",
+    "title": "Regal Bridal Artistry — Royal Haute Couture",
+    "cat": "Bridal Couture",
+    "d": "Timeless, luminous bridal designs calibrated to celebrate your natural contours, royal attire, and ceremony lighting.",
+    "tags": [
+      "HD Glass Skin",
+      "Sculpted Eye Design",
+      "Traditional Draping",
+      "All-Day Wear"
+    ]
+  },
+  {
+    "id": "work-02",
+    "src": "/images/portfolio-38.jpg",
+    "title": "Mythic SFX Sculpture — High-Fashion Fantasy Prosthetics",
+    "cat": "Creative & SFX",
+    "d": "Avant-garde editorial, high-fashion prosthetic character design, and conceptual runway beauty engineered for cinematic 8K cameras.",
+    "tags": [
+      "Prosthetic Fabrication",
+      "Silicone Blending",
+      "Character Design",
+      "Runway Avant-Garde"
+    ]
+  },
+  {
+    "id": "work-03",
+    "src": "/images/portfolio-53.jpg",
+    "title": "Chrome Nail Architecture — Sculptural Metallic 3D Couture",
+    "cat": "Precision Nails",
+    "d": "Architectural nail couture featuring sculpted 3D chrome embellishments, Swarovski crystal settings, and ultra-durable luxury gel overlay.",
+    "tags": [
+      "Liquid Chrome Overlay",
+      "Swarovski Crystal Pave",
+      "Architectural Extensions",
+      "Bespoke Sizing"
+    ]
+  },
+  {
+    "id": "work-04",
+    "src": "/images/portfolio-07.jpg",
+    "title": "Editorial Portraiture — Magazine Cover Lookbook",
+    "cat": "Editorial Glamour",
+    "d": "Ultra-refined editorial beauty showcasing velvety skin finishes, structural bone sculpting, and razor-sharp liner precision.",
+    "tags": [
+      "Camera-Ready Base",
+      "Smokey Kohl",
+      "Velvet Lips",
+      "High-Definition Studio Lighting"
+    ]
+  },
+  {
+    "id": "work-05",
+    "src": "/images/portfolio-11.jpg",
+    "title": "Golden Hour Symphony — Luminous Bridal Radiance",
+    "cat": "Bridal Glamour",
+    "d": "Golden hour bridal illumination featuring warm champagne shimmer, sculpted brow framing, and luminous dewy glow.",
+    "tags": [
+      "Champagne Highlights",
+      "Sculpted Brows",
+      "Warm Undertones",
+      "Sunset Radiance"
+    ]
+  },
+  {
+    "id": "work-06",
+    "src": "/images/portfolio-20.jpg",
+    "title": "Intricate Veil & Jewels — Traditional Royal Draping",
+    "cat": "Traditional & Draping",
+    "d": "Traditional heritage draping paired with antique Kundan jewels, matha patti precision, and rich velvet lehenga accents.",
+    "tags": [
+      "Royal Kundan",
+      "Heritage Zari",
+      "Matha Patti Setting",
+      "Silk Dupatta Perfection"
+    ]
+  },
+  {
+    "id": "work-07",
+    "src": "/images/portfolio-37.jpg",
+    "title": "Avant-Garde Runway — High-Fashion Couture Vanguard",
+    "cat": "Fashion & Runway",
+    "d": "Runway-calibrated modern avant-garde artistry with monochromatic nude aesthetics, sleek wet-hair architecture, and graphic contouring.",
+    "tags": [
+      "Graphic Contouring",
+      "Sleek Architecture",
+      "Haute Couture",
+      "Runway Calibrated"
+    ]
+  },
+  {
+    "id": "client-1",
+    "src": "/images/clients/img175.jpg",
+    "title": "UK International Award Winner & Master Portrait",
+    "cat": "Master Artist",
+    "d": "Bespoke Master Artist curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Master Artist",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-2",
+    "src": "/images/clients/img176.jpg",
+    "title": "Regal Rajputana Kundan Radiance",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-3",
+    "src": "/images/clients/img177.jpg",
+    "title": "Crimson Velvet Heritage Bride",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-4",
+    "src": "/images/clients/img178.jpg",
+    "title": "Gilded Starlight Evening Glow",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-5",
+    "src": "/images/clients/img179.jpg",
+    "title": "Smoked Kohl Siren Eyes",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-6",
+    "src": "/images/clients/img180.jpg",
+    "title": "Pastel Floral Muhurtham Elegance",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-7",
+    "src": "/images/clients/img181.jpg",
+    "title": "Imperial Rose Banarasi Bride",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-8",
+    "src": "/images/clients/img182.jpg",
+    "title": "Champagne Dewy Glass Skin",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-9",
+    "src": "/images/clients/img183.jpg",
+    "title": "Sculpted Golden Hour Portrait",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-10",
+    "src": "/images/clients/img184.jpg",
+    "title": "Intricate Matha Patti Symmetry",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-11",
+    "src": "/images/clients/img185.jpg",
+    "title": "Opulent Emerald Polki Glow",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-12",
+    "src": "/images/clients/img186.jpg",
+    "title": "Cinematic Hollywood Glamour",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-13",
+    "src": "/images/clients/img187.jpg",
+    "title": "Modern Minimalist Silk Draping",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-14",
+    "src": "/images/clients/img188.jpg",
+    "title": "Bronze Terracotta Sunset Glow",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-15",
+    "src": "/images/clients/img189.jpg",
+    "title": "Avant-Garde High-Gloss Editorial",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-16",
+    "src": "/images/clients/img190.jpg",
+    "title": "Royal Noor Bridal Aura",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-17",
+    "src": "/images/clients/img191.jpg",
+    "title": "Celestial Gilded Shimmer",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-18",
+    "src": "/images/clients/img192.jpg",
+    "title": "Traditional Velvet Odhni Precision",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-19",
+    "src": "/images/clients/img193.jpg",
+    "title": "Architectural Winged Kohl",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-20",
+    "src": "/images/clients/img194.jpg",
+    "title": "Peach Blossom Soft Radiance",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-21",
+    "src": "/images/clients/img195.jpg",
+    "title": "Maharani Heirloom Jewels & Veil",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-22",
+    "src": "/images/clients/img196.jpg",
+    "title": "Vibrant Mehendi Coral Radiance",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-23",
+    "src": "/images/clients/img197.jpg",
+    "title": "Haute Couture Monochromatic Nude",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-24",
+    "src": "/images/clients/img198.jpg",
+    "title": "Mirror Chrome Nail Architecture",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-25",
+    "src": "/images/clients/img199.jpg",
+    "title": "Sun-Drenched Golden Bridal Glow",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-26",
+    "src": "/images/clients/img200.jpg",
+    "title": "Bespoke Sangeet Night Glamour",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-27",
+    "src": "/images/clients/img201.jpg",
+    "title": "Luminous Pearl Contour Sculpting",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-28",
+    "src": "/images/clients/img202.jpg",
+    "title": "Traditional Temple Gold Symphony",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-29",
+    "src": "/images/clients/img203.jpg",
+    "title": "High-Definition Matte Velvet Finish",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-30",
+    "src": "/images/clients/img204.jpg",
+    "title": "Prosthetic SFX Mythic Artistry",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-31",
+    "src": "/images/clients/img205.jpg",
+    "title": "Modern Contemporary Reception Glam",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-32",
+    "src": "/images/clients/img206.jpg",
+    "title": "Romantic Soft Cut Crease Elegance",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-33",
+    "src": "/images/clients/img207.jpg",
+    "title": "Royal Scarlet Shehnai Radiance",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-34",
+    "src": "/images/clients/img208.jpg",
+    "title": "Chiaroscuro Studio Editorial",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-35",
+    "src": "/images/clients/img209.jpg",
+    "title": "Subtle Luminous Skin Radiance",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-36",
+    "src": "/images/clients/img210.jpg",
+    "title": "Heritage Zardozi Draping & Hair",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-37",
+    "src": "/images/clients/img211.jpg",
+    "title": "Gilded Wing Liner & Precision Lashes",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-38",
+    "src": "/images/clients/img212.jpg",
+    "title": "Shimmering Champagne Eye Architecture",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-39",
+    "src": "/images/clients/img213.jpg",
+    "title": "Rose Quartz Bridal Illumination",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-40",
+    "src": "/images/clients/img214.jpg",
+    "title": "Neo-Futuristic Editorial Gaze",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-41",
+    "src": "/images/clients/img215.jpg",
+    "title": "Intricate Henna & Jewel Harmony",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-42",
+    "src": "/images/clients/img216.jpg",
+    "title": "Sculpted Brow & Siren Eye Drama",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-43",
+    "src": "/images/clients/img217.jpg",
+    "title": "Sunset Gold Bridal Portrait",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-44",
+    "src": "/images/clients/img218.jpg",
+    "title": "Sleek Editorial Wet-Hair Couture",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-45",
+    "src": "/images/clients/img219.jpg",
+    "title": "Regal Velvet Lehenga Symphony",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-46",
+    "src": "/images/clients/img220.jpg",
+    "title": "Golden Ochre Haldi Radiance",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-47",
+    "src": "/images/clients/img221.jpg",
+    "title": "Sculpted 3D Jewel Encrusted Nails",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-48",
+    "src": "/images/clients/img222.jpg",
+    "title": "Modern Classic Red Lip Precision",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-49",
+    "src": "/images/clients/img223.jpg",
+    "title": "Airbrushed Porcelain Perfection",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-50",
+    "src": "/images/clients/img224.jpg",
+    "title": "Ethereal Sheer Veil Radiance",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-51",
+    "src": "/images/clients/img225.jpg",
+    "title": "High-Fashion Metallic Accent",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-52",
+    "src": "/images/clients/img226.jpg",
+    "title": "Traditional Silk Dupatta Perfection",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-53",
+    "src": "/images/clients/img227.jpg",
+    "title": "Sultry Smokey Eye Contour",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-54",
+    "src": "/images/clients/img228.jpg",
+    "title": "Golden Peacock Eye Artistry",
+    "cat": "Eye Architecture & SFX",
+    "d": "Bespoke Eye Architecture & SFX curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Eye Architecture & SFX",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-55",
+    "src": "/images/clients/img229.jpg",
+    "title": "Contemporary Cocktail Saree Glow",
+    "cat": "Precision Nails & Detail",
+    "d": "Bespoke Precision Nails & Detail curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Precision Nails & Detail",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-56",
+    "src": "/images/clients/img230.jpg",
+    "title": "Flawless HD Bridal Airbrushing",
+    "cat": "Bridal Couture",
+    "d": "Bespoke Bridal Couture curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Bridal Couture",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-57",
+    "src": "/images/clients/img231.jpg",
+    "title": "Grandeur Heritage Bridal Splendor",
+    "cat": "Royal Reception",
+    "d": "Bespoke Royal Reception curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Royal Reception",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-58",
+    "src": "/images/clients/img235.jpg",
+    "title": "Couture Runway Beauty Masterclass",
+    "cat": "Editorial Glamour",
+    "d": "Bespoke Editorial Glamour curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Editorial Glamour",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  },
+  {
+    "id": "client-59",
+    "src": "/images/clients/img239.jpg",
+    "title": "Signature UK International Finale",
+    "cat": "Traditional & Draping",
+    "d": "Bespoke Traditional & Draping curation by Upasana Kumari calibrated for 8K cinema lenses, endurance wear, and unforgettable presence.",
+    "tags": [
+      "Traditional & Draping",
+      "UK International Certified",
+      "Camera-Ready Precision",
+      "4K High Definition"
+    ]
+  }
+]

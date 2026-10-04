@@ -1,3 +1,6 @@
+import Lenis from 'lenis';
+import CinemaLightbox from './components/CinemaLightbox';
+import masterCatalog from './masterCatalog.json';
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
@@ -383,7 +386,8 @@ function CinematicDust() {
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
-  const [lightbox, setLightbox] = useState(null);
+  const [lightboxItem, setLightboxItem] = useState(null);
+  const lenisRef = useRef(null);
   const [selectedService, setSelectedService] = useState('Bridal Haute Couture');
   const [formSubmitted, setFormSubmitted] = useState(false);
   
@@ -391,6 +395,84 @@ function App() {
   const workRef = useRef(null);
   const tlRef = useRef(null);
   const heroRef = useRef(null);
+
+  // Lenis Luxury Inertial Smooth Scrolling System
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.6,
+    });
+    lenisRef.current = lenis;
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const raf = (time) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
+
+    // Smooth anchor navigation for all internal hashes
+    const handleAnchorClick = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (a) {
+        const href = a.getAttribute('href');
+        if (href && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            lenis.scrollTo(target, { offset: -70, duration: 1.35 });
+          }
+        }
+      }
+    };
+    document.addEventListener('click', handleAnchorClick);
+
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+      gsap.ticker.remove(raf);
+      lenis.destroy();
+    };
+  }, []);
+
+  // Pause smooth scroll when cinema lightbox modal is open
+  useEffect(() => {
+    if (lenisRef.current) {
+      if (lightboxItem) {
+        lenisRef.current.stop();
+      } else {
+        lenisRef.current.start();
+      }
+    }
+  }, [lightboxItem]);
+
+  // Master lightbox opener
+  const openMasterLightbox = (itemOrSrc, title, cat, d) => {
+    if (typeof itemOrSrc === 'string') {
+      const found = masterCatalog.find(m => m.src === itemOrSrc) || {
+        id: 'item-' + Date.now(),
+        src: itemOrSrc,
+        title: title || 'Exclusive Portfolio Look',
+        cat: cat || 'Editorial Couture',
+        d: d || ''
+      };
+      setLightboxItem(found);
+    } else if (itemOrSrc && itemOrSrc.src) {
+      const found = masterCatalog.find(m => m.src === itemOrSrc.src || m.id === itemOrSrc.id) || itemOrSrc;
+      setLightboxItem(found);
+    }
+  };
+
+  const handleLightboxNavigate = (step) => {
+    if (!lightboxItem) return;
+    const curIdx = masterCatalog.findIndex(m => m.src === lightboxItem.src || m.id === lightboxItem.id);
+    const nextIdx = (curIdx + step + masterCatalog.length) % masterCatalog.length;
+    setLightboxItem(masterCatalog[nextIdx]);
+  };
+
 
   // Scroll Progress Springs
   const { scrollYProgress } = useScroll();
@@ -730,7 +812,7 @@ function App() {
             i={i} 
             total={WORKS.length} 
             prog={wp} 
-            onSelectImage={(img, title) => setLightbox({ src: img, title })}
+            onSelectImage={(img, title) => openMasterLightbox(img, title)}
           />
         ))}
 
@@ -739,7 +821,7 @@ function App() {
       {/* ==========================================================================
           SECTION 02-B: 360° CINEMATIC ROLLING CIRCULAR CLIENT SHOWCASE (59 MASTERPIECES)
           ========================================================================== */}
-      <RollingGallery onSelectLook={(lookTitle) => setSelectedService('Bridal Haute Couture: ' + lookTitle)} />
+      <RollingGallery onOpenLightbox={(look) => openMasterLightbox(look)} />
 
 
       {/* ==========================================================================
@@ -898,38 +980,21 @@ function App() {
       </section>
 
       {/* ==========================================================================
-          LIGHTBOX MODAL FOR FULL-RESOLUTION LOOKBOOK INSPECTION
+          UNIFIED LARGE-FORMAT 4K CINEMA LIGHTBOX (ALL TEMPLATE & CLIENT PICTURES)
           ========================================================================== */}
-      <AnimatePresence>
-        {lightbox && (
-          <motion.div 
-            className="lightbox-modal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightbox(null)}
-          >
-            <motion.div 
-              className="lightbox-content"
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button 
-                className="lightbox-close" 
-                onClick={() => setLightbox(null)}
-              >
-                <X size={18} /> CLOSE (ESC)
-              </button>
-              <img src={lightbox.src} alt={lightbox.title} />
-              <div className="lightbox-caption">
-                {lightbox.title.toUpperCase()} // UPASANA KUMARI ATELIER
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <CinemaLightbox 
+        activeItem={lightboxItem}
+        catalog={masterCatalog}
+        onClose={() => setLightboxItem(null)}
+        onNavigate={handleLightboxNavigate}
+        onReserve={(title) => {
+          setSelectedService('Bridal Haute Couture: ' + title);
+          if (lenisRef.current) {
+            const contactEl = document.querySelector('#contact');
+            if (contactEl) lenisRef.current.scrollTo(contactEl, { offset: -50, duration: 1.3 });
+          }
+        }}
+      />
 
       {/* ==========================================================================
           LUXURY FOOTER

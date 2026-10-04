@@ -1,3 +1,26 @@
+
+/* ==========================================================================
+   LENIS LUXURY INERTIAL SMOOTH SCROLLING SYSTEM
+   ========================================================================== */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 /* ==========================================================================
    UPASANA KUMARI — CINEMATIC LUXURY MOTION SYSTEM & EDITORIAL AESTHETICS
    ========================================================================== */
@@ -2493,4 +2516,302 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ==========================================================================
+   LARGE-FORMAT 4K CINEMA LIGHTBOX (FOR ALL TEMPLATE & CLIENT PICTURES)
+   ========================================================================== */
+.cinema-lb-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 4, 8, 0.94);
+  backdrop-filter: blur(28px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px;
+  overflow: hidden;
+}
+
+.cinema-lb-modal {
+  position: relative;
+  width: 100%;
+  max-width: 1360px;
+  height: 94vh;
+  background: rgba(10, 12, 22, 0.97);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.98), 0 0 60px rgba(217, 169, 58, 0.22);
+}
+
+.cinema-lb-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--line-light);
+  background: rgba(16, 18, 32, 0.95);
+  flex-wrap: wrap;
+  gap: 16px;
+  z-index: 10;
+}
+
+.cinema-lb-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cinema-lb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(217, 169, 58, 0.16);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 10px var(--m);
+  letter-spacing: 0.14em;
+  color: var(--gold-light);
+}
+
+.cinema-lb-title {
+  font: 18px var(--s);
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+
+.cinema-lb-counter {
+  font: 11px var(--m);
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.cinema-lb-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cinema-lb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line-light);
+  color: var(--text);
+  font: 11px var(--m);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.cinema-lb-btn:hover {
+  background: rgba(217, 169, 58, 0.16);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.cinema-lb-close:hover {
+  background: rgba(230, 60, 60, 0.22);
+  border-color: #ff5555;
+  color: #ff9999;
+}
+
+.cinema-lb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: var(--gold);
+  border: none;
+  color: #05060d;
+  font: 11px var(--m);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.cinema-lb-cta:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 20px var(--gold-glow);
+  transform: translateY(-1px);
+}
+
+/* Cinema Viewport */
+.cinema-lb-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #020306;
+}
+
+.cinema-lb-canvas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  user-select: none;
+  padding: 16px;
+}
+
+.cinema-lb-img {
+  max-height: calc(94vh - 240px);
+  max-width: 88vw;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+}
+
+.cinema-lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(16, 18, 32, 0.85);
+  border: 1px solid var(--line);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.cinema-lb-nav:hover {
+  background: var(--gold);
+  color: #05060d;
+  box-shadow: 0 0 24px var(--gold-glow);
+  transform: translateY(-50%) scale(1.1);
+  border-color: var(--gold);
+}
+
+.cinema-lb-nav-prev { left: 24px; }
+.cinema-lb-nav-next { right: 24px; }
+
+/* Bottom Footer with Narrative Description and Scrubber Filmstrip */
+.cinema-lb-footer {
+  padding: 12px 24px 16px;
+  background: rgba(10, 12, 22, 0.98);
+  border-top: 1px solid var(--line-light);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cinema-lb-desc-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cinema-lb-desc-strip p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 780px;
+}
+
+.cinema-lb-tag-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cinema-lb-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 10px var(--m);
+  color: var(--gold-light);
+  background: rgba(217, 169, 58, 0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.cinema-lb-filmstrip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 6px 2px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.cinema-lb-thumb {
+  flex-shrink: 0;
+  width: 58px;
+  height: 76px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line-light);
+  background: rgba(16, 18, 32, 0.8);
+  cursor: pointer;
+  opacity: 0.45;
+  padding: 0;
+  transition: all 0.25s;
+}
+
+.cinema-lb-thumb:hover {
+  opacity: 0.9;
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.cinema-lb-thumb.active {
+  opacity: 1;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 16px var(--gold-glow);
+  transform: translateY(-4px) scale(1.08);
+}
+
+.cinema-lb-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .cinema-lb-modal {
+    height: 96vh;
+  }
+  .cinema-lb-toolbar {
+    padding: 12px 16px;
+  }
+  .cinema-lb-title {
+    font-size: 15px;
+  }
+  .cinema-lb-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .cinema-lb-nav {
+    width: 42px;
+    height: 42px;
+  }
+  .cinema-lb-nav-prev { left: 12px; }
+  .cinema-lb-nav-next { right: 12px; }
 }
