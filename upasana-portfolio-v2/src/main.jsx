@@ -22,6 +22,7 @@ import {
   Trophy
 } from 'lucide-react';
 import './styles.css';
+import RollingGallery from './components/RollingGallery';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
    PORTFOLIO DATA & CONTENT
    ========================================================================== */
 const NAME = 'Upasana Kumari';
-const NAV = ['About', 'Work', 'Skills', 'Journey', 'Contact'];
+const NAV = ['About', 'Work', 'Showcase', 'Skills', 'Journey', 'Contact'];
 
 const STATS = [
   { val: '150+', label: 'Looks Curated', detail: 'Bridal & High Fashion' },
@@ -42,69 +43,70 @@ const WORKS = [
   { 
     n: '01', 
     cat: 'Bridal Couture', 
-    t: 'Regal Bridal Artistry', 
-    img: '/images/portfolio-24.jpg', 
-    d: 'Timeless, luminous bridal designs calibrated to celebrate your natural contours, royal attire, and ceremony lighting.', 
-    tags: ['HD Glass Skin', 'Sculpted Eye Design', 'Traditional Draping', 'All-Day Wear'], 
+    t: 'Royal Velvet Bridal Couture', 
+    img: '/images/clients/img235.jpg', 
+    d: 'Ultra-HD bridal beauty calibrated with luminous glass skin, bespoke contouring, and heritage velvet lehenga draping.', 
+    tags: ['HD Glass Base', 'Cut-Crease Eye', 'Heritage Kundan', '16h Longevity'], 
     spec: [
-      ['Occasion', 'Bridal & Reception'],
+      ['Occasion', 'Royal Wedding & Reception'],
       ['Skin Protocol', 'Dewy HD Radiance'],
-      ['Draping', 'Intricate Dupatta & Jewels'],
-      ['Longevity', '16h Transfer-Resistant']
+      ['Draping', 'Velvet Dupatta & Choker'],
+      ['Finish', 'Waterproof 8K Ready']
     ] 
   },
   { 
     n: '02', 
     cat: 'Creative & SFX', 
-    t: 'Character & Fantasy SFX', 
-    img: '/images/portfolio-38.jpg', 
-    d: 'Avant-garde fantasy and theatrical transformations sculpted with bespoke prosthetics, body paint, and visionary textures.', 
-    tags: ['Prosthetics', 'Theatrical Paint', 'Sculptural Props', 'Editorial Concept'], 
+    t: 'Mythic Dryad & Serpent SFX', 
+    img: '/images/clients/img210.jpg', 
+    d: 'Award-winning avant-garde fantasy transformation featuring hand-sculpted serpent crowns, reptilian scale body paint, and theatrical textures.', 
+    tags: ['Sculpted Headpiece', 'Reptilian Scales', 'Body Paint', 'UK International Award'], 
     spec: [
       ['Medium', 'Silicone & Body Pigment'],
-      ['Genre', 'Mythic Fantasy / SFX'],
-      ['Application', 'Multi-Layer Prosthetics'],
-      ['Lighting', 'Cinematic High-Contrast']
+      ['Genre', 'Fantasy / Mythic SFX'],
+      ['Accreditation', 'UK International Certified'],
+      ['Aesthetic', 'Theatrical Sculpture']
     ] 
   },
   { 
     n: '03', 
     cat: 'Precision Details', 
-    t: 'Haute Nail Architecture', 
-    img: '/images/portfolio-53.jpg', 
-    d: 'Miniature fine art on fingertips where geometric precision, chrome finishes, and jewel embellishments merge.', 
-    tags: ['Sculpted Extensions', 'Hand-Painted Foil', 'Gel Topography', 'Chrome Glaze'], 
+    t: 'Haute Marble & Swirl Gel Nails', 
+    img: '/images/clients/img225.jpg', 
+    d: 'Miniature fine art on fingertips featuring hand-painted marble swirls, gold glitter ribbons, and mirror-gloss gel architecture.', 
+    tags: ['Marble Veining', 'Gold Glitter Ribbons', 'Gel Topography', 'Russian Manicure'], 
     spec: [
-      ['Craft', 'Sculpted Acrylic & Gel'],
-      ['Finish', 'Mirror Chrome & Matte'],
+      ['Craft', 'Sculpted Gel & Overlay'],
+      ['Finish', 'Mirror Gloss & Glitter'],
       ['Detail', 'Micro-Brush Artwork'],
-      ['Durability', 'Chip-Proof Salon Grade']
+      ['Longevity', '4-Week Chip-Resistant']
     ] 
   },
   { 
     n: '04', 
-    cat: 'High Fashion', 
-    t: 'Editorial Studio Beauty', 
-    img: '/images/portfolio-07.jpg', 
-    d: 'Bold runway and editorial cover looks designed for high-resolution studio flash and creative fashion campaigns.', 
-    tags: ['High-Shine Gloss', 'Graphic Geometry', 'Skin Glow', 'Color Theory'], 
+    cat: 'Editorial Bridal', 
+    t: 'Editorial Magenta Glamour', 
+    img: '/images/clients/img196.jpg', 
+    d: 'Rich jewel-toned magenta bridal aesthetic balancing shimmering cut-crease smokey eyes with emerald jewelry and regal poise.', 
+    tags: ['Smokey Cut-Crease', 'Emerald Accents', 'Matte Lips', 'Editorial Pose'], 
     spec: [
-      ['Setting', 'Studio Strobe & Daylight'],
-      ['Focus', 'Editorial Gaze & Contours'],
-      ['Base', 'Ultra-Sheer Luminous'],
-      ['Aesthetic', 'Modern Avant-Garde']
+      ['Setting', 'Studio Lighting & Flash'],
+      ['Focus', 'Sultry Eyes & Contours'],
+      ['Draping', 'Royal Zari Dupatta'],
+      ['Longevity', 'High-Flash Proof']
     ] 
   },
 ];
 
 const LOOKBOOK_IMAGES = [
-  { src: '/images/portfolio-24.jpg', title: 'Regal Bridal Radiance', cat: 'Bridal Couture' },
-  { src: '/images/portfolio-38.jpg', title: 'Mythic SFX Sculpture', cat: 'Creative & SFX' },
-  { src: '/images/portfolio-53.jpg', title: 'Chrome Nail Architecture', cat: 'Nail Art' },
-  { src: '/images/portfolio-07.jpg', title: 'Editorial Portraiture', cat: 'Editorial' },
-  { src: '/images/portfolio-11.jpg', title: 'Golden Hour Symphony', cat: 'Bridal Glamour' },
-  { src: '/images/portfolio-20.jpg', title: 'Intricate Veil & Jewels', cat: 'Draping' },
-  { src: '/images/portfolio-37.jpg', title: 'Avant-Garde Runway', cat: 'Fashion' },
+  { src: '/images/clients/img235.jpg', title: 'Royal Velvet Bridal', cat: 'Bridal Couture' },
+  { src: '/images/clients/img210.jpg', title: 'Mythic Serpent SFX Sculpture', cat: 'Creative SFX' },
+  { src: '/images/clients/img196.jpg', title: 'Magenta Editorial Glamour', cat: 'Editorial Bridal' },
+  { src: '/images/clients/img176.jpg', title: 'Heritage Bengali Bride', cat: 'Traditional Bridal' },
+  { src: '/images/clients/img225.jpg', title: 'Marble & Gold Gel Nails', cat: 'Nail Architecture' },
+  { src: '/images/clients/img185.jpg', title: 'Crimson Zardozi Lehenga', cat: 'Bridal Couture' },
+  { src: '/images/clients/img177.jpg', title: 'Sindoor Ceremony Radiance', cat: 'Traditional Draping' },
+  { src: '/images/upasana.jpg', title: 'Upasana Kumari (London Award)', cat: 'Atelier Master' },
 ];
 
 const SKILLS = [
@@ -682,35 +684,13 @@ function App() {
           />
         ))}
 
-        {/* FULL LOOKBOOK ARCHIVE STRIP */}
-        <div className="lookbook-strip">
-          <div className="lookbook-header">
-            <div>
-              <span className="lbl">// Editorial Gallery</span>
-              <h3 className="s" style={{ fontSize: 32, marginTop: 8 }}>High-Definition Lookbook</h3>
-            </div>
-            <p style={{ color: 'var(--muted)', fontSize: 13, margin: 0 }}>
-              Click any look to expand into cinema inspection mode.
-            </p>
-          </div>
+        </section>
 
-          <div className="lookbook-grid">
-            {LOOKBOOK_IMAGES.map((item, idx) => (
-              <div 
-                key={idx} 
-                className="lookbook-thumb" 
-                onClick={() => setLightbox({ src: item.src, title: item.title })}
-              >
-                <img src={item.src} alt={item.title} loading="lazy" />
-                <div className="lookbook-thumb-label">
-                  <div>{item.title}</div>
-                  <div style={{ color: 'var(--muted)', fontSize: 9 }}>{item.cat}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ==========================================================================
+          SECTION 02-B: 360° CINEMATIC ROLLING CIRCULAR CLIENT SHOWCASE (59 MASTERPIECES)
+          ========================================================================== */}
+      <RollingGallery onSelectLook={(lookTitle) => setSelectedService('Bridal Haute Couture: ' + lookTitle)} />
+
 
       {/* ==========================================================================
           SECTION 03: SKILLS MATRIX — INTERACTIVE SPOTLIGHT BENTO

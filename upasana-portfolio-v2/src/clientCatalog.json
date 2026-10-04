@@ -1,0 +1,415 @@
+[
+  {
+    "id": "client-1",
+    "file": "img175.jpg",
+    "title": "UK International Award Winner & Master Portrait",
+    "cat": "Master Artist",
+    "alt": "UK International Award Winner & Master Portrait by Upasana Kumari"
+  },
+  {
+    "id": "client-2",
+    "file": "img176.jpg",
+    "title": "Regal Rajputana Kundan Radiance",
+    "cat": "Bridal Couture",
+    "alt": "Regal Rajputana Kundan Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-3",
+    "file": "img177.jpg",
+    "title": "Crimson Velvet Heritage Bride",
+    "cat": "Royal Reception",
+    "alt": "Crimson Velvet Heritage Bride by Upasana Kumari"
+  },
+  {
+    "id": "client-4",
+    "file": "img178.jpg",
+    "title": "Gilded Starlight Evening Glow",
+    "cat": "Editorial Glamour",
+    "alt": "Gilded Starlight Evening Glow by Upasana Kumari"
+  },
+  {
+    "id": "client-5",
+    "file": "img179.jpg",
+    "title": "Smoked Kohl Siren Eyes",
+    "cat": "Traditional & Draping",
+    "alt": "Smoked Kohl Siren Eyes by Upasana Kumari"
+  },
+  {
+    "id": "client-6",
+    "file": "img180.jpg",
+    "title": "Pastel Floral Muhurtham Elegance",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Pastel Floral Muhurtham Elegance by Upasana Kumari"
+  },
+  {
+    "id": "client-7",
+    "file": "img181.jpg",
+    "title": "Imperial Rose Banarasi Bride",
+    "cat": "Precision Nails & Detail",
+    "alt": "Imperial Rose Banarasi Bride by Upasana Kumari"
+  },
+  {
+    "id": "client-8",
+    "file": "img182.jpg",
+    "title": "Champagne Dewy Glass Skin",
+    "cat": "Bridal Couture",
+    "alt": "Champagne Dewy Glass Skin by Upasana Kumari"
+  },
+  {
+    "id": "client-9",
+    "file": "img183.jpg",
+    "title": "Sculpted Golden Hour Portrait",
+    "cat": "Royal Reception",
+    "alt": "Sculpted Golden Hour Portrait by Upasana Kumari"
+  },
+  {
+    "id": "client-10",
+    "file": "img184.jpg",
+    "title": "Intricate Matha Patti Symmetry",
+    "cat": "Editorial Glamour",
+    "alt": "Intricate Matha Patti Symmetry by Upasana Kumari"
+  },
+  {
+    "id": "client-11",
+    "file": "img185.jpg",
+    "title": "Opulent Emerald Polki Glow",
+    "cat": "Traditional & Draping",
+    "alt": "Opulent Emerald Polki Glow by Upasana Kumari"
+  },
+  {
+    "id": "client-12",
+    "file": "img186.jpg",
+    "title": "Cinematic Hollywood Glamour",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Cinematic Hollywood Glamour by Upasana Kumari"
+  },
+  {
+    "id": "client-13",
+    "file": "img187.jpg",
+    "title": "Modern Minimalist Silk Draping",
+    "cat": "Precision Nails & Detail",
+    "alt": "Modern Minimalist Silk Draping by Upasana Kumari"
+  },
+  {
+    "id": "client-14",
+    "file": "img188.jpg",
+    "title": "Bronze Terracotta Sunset Glow",
+    "cat": "Bridal Couture",
+    "alt": "Bronze Terracotta Sunset Glow by Upasana Kumari"
+  },
+  {
+    "id": "client-15",
+    "file": "img189.jpg",
+    "title": "Avant-Garde High-Gloss Editorial",
+    "cat": "Royal Reception",
+    "alt": "Avant-Garde High-Gloss Editorial by Upasana Kumari"
+  },
+  {
+    "id": "client-16",
+    "file": "img190.jpg",
+    "title": "Royal Noor Bridal Aura",
+    "cat": "Editorial Glamour",
+    "alt": "Royal Noor Bridal Aura by Upasana Kumari"
+  },
+  {
+    "id": "client-17",
+    "file": "img191.jpg",
+    "title": "Celestial Gilded Shimmer",
+    "cat": "Traditional & Draping",
+    "alt": "Celestial Gilded Shimmer by Upasana Kumari"
+  },
+  {
+    "id": "client-18",
+    "file": "img192.jpg",
+    "title": "Traditional Velvet Odhni Precision",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Traditional Velvet Odhni Precision by Upasana Kumari"
+  },
+  {
+    "id": "client-19",
+    "file": "img193.jpg",
+    "title": "Architectural Winged Kohl",
+    "cat": "Precision Nails & Detail",
+    "alt": "Architectural Winged Kohl by Upasana Kumari"
+  },
+  {
+    "id": "client-20",
+    "file": "img194.jpg",
+    "title": "Peach Blossom Soft Radiance",
+    "cat": "Bridal Couture",
+    "alt": "Peach Blossom Soft Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-21",
+    "file": "img195.jpg",
+    "title": "Maharani Heirloom Jewels & Veil",
+    "cat": "Royal Reception",
+    "alt": "Maharani Heirloom Jewels & Veil by Upasana Kumari"
+  },
+  {
+    "id": "client-22",
+    "file": "img196.jpg",
+    "title": "Vibrant Mehendi Coral Radiance",
+    "cat": "Editorial Glamour",
+    "alt": "Vibrant Mehendi Coral Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-23",
+    "file": "img197.jpg",
+    "title": "Haute Couture Monochromatic Nude",
+    "cat": "Traditional & Draping",
+    "alt": "Haute Couture Monochromatic Nude by Upasana Kumari"
+  },
+  {
+    "id": "client-24",
+    "file": "img198.jpg",
+    "title": "Mirror Chrome Nail Architecture",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Mirror Chrome Nail Architecture by Upasana Kumari"
+  },
+  {
+    "id": "client-25",
+    "file": "img199.jpg",
+    "title": "Sun-Drenched Golden Bridal Glow",
+    "cat": "Precision Nails & Detail",
+    "alt": "Sun-Drenched Golden Bridal Glow by Upasana Kumari"
+  },
+  {
+    "id": "client-26",
+    "file": "img200.jpg",
+    "title": "Bespoke Sangeet Night Glamour",
+    "cat": "Bridal Couture",
+    "alt": "Bespoke Sangeet Night Glamour by Upasana Kumari"
+  },
+  {
+    "id": "client-27",
+    "file": "img201.jpg",
+    "title": "Luminous Pearl Contour Sculpting",
+    "cat": "Royal Reception",
+    "alt": "Luminous Pearl Contour Sculpting by Upasana Kumari"
+  },
+  {
+    "id": "client-28",
+    "file": "img202.jpg",
+    "title": "Traditional Temple Gold Symphony",
+    "cat": "Editorial Glamour",
+    "alt": "Traditional Temple Gold Symphony by Upasana Kumari"
+  },
+  {
+    "id": "client-29",
+    "file": "img203.jpg",
+    "title": "High-Definition Matte Velvet Finish",
+    "cat": "Traditional & Draping",
+    "alt": "High-Definition Matte Velvet Finish by Upasana Kumari"
+  },
+  {
+    "id": "client-30",
+    "file": "img204.jpg",
+    "title": "Prosthetic SFX Mythic Artistry",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Prosthetic SFX Mythic Artistry by Upasana Kumari"
+  },
+  {
+    "id": "client-31",
+    "file": "img205.jpg",
+    "title": "Modern Contemporary Reception Glam",
+    "cat": "Precision Nails & Detail",
+    "alt": "Modern Contemporary Reception Glam by Upasana Kumari"
+  },
+  {
+    "id": "client-32",
+    "file": "img206.jpg",
+    "title": "Romantic Soft Cut Crease Elegance",
+    "cat": "Bridal Couture",
+    "alt": "Romantic Soft Cut Crease Elegance by Upasana Kumari"
+  },
+  {
+    "id": "client-33",
+    "file": "img207.jpg",
+    "title": "Royal Scarlet Shehnai Radiance",
+    "cat": "Royal Reception",
+    "alt": "Royal Scarlet Shehnai Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-34",
+    "file": "img208.jpg",
+    "title": "Chiaroscuro Studio Editorial",
+    "cat": "Editorial Glamour",
+    "alt": "Chiaroscuro Studio Editorial by Upasana Kumari"
+  },
+  {
+    "id": "client-35",
+    "file": "img209.jpg",
+    "title": "Subtle Luminous Skin Radiance",
+    "cat": "Traditional & Draping",
+    "alt": "Subtle Luminous Skin Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-36",
+    "file": "img210.jpg",
+    "title": "Heritage Zardozi Draping & Hair",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Heritage Zardozi Draping & Hair by Upasana Kumari"
+  },
+  {
+    "id": "client-37",
+    "file": "img211.jpg",
+    "title": "Gilded Wing Liner & Precision Lashes",
+    "cat": "Precision Nails & Detail",
+    "alt": "Gilded Wing Liner & Precision Lashes by Upasana Kumari"
+  },
+  {
+    "id": "client-38",
+    "file": "img212.jpg",
+    "title": "Shimmering Champagne Eye Architecture",
+    "cat": "Bridal Couture",
+    "alt": "Shimmering Champagne Eye Architecture by Upasana Kumari"
+  },
+  {
+    "id": "client-39",
+    "file": "img213.jpg",
+    "title": "Rose Quartz Bridal Illumination",
+    "cat": "Royal Reception",
+    "alt": "Rose Quartz Bridal Illumination by Upasana Kumari"
+  },
+  {
+    "id": "client-40",
+    "file": "img214.jpg",
+    "title": "Neo-Futuristic Editorial Gaze",
+    "cat": "Editorial Glamour",
+    "alt": "Neo-Futuristic Editorial Gaze by Upasana Kumari"
+  },
+  {
+    "id": "client-41",
+    "file": "img215.jpg",
+    "title": "Intricate Henna & Jewel Harmony",
+    "cat": "Traditional & Draping",
+    "alt": "Intricate Henna & Jewel Harmony by Upasana Kumari"
+  },
+  {
+    "id": "client-42",
+    "file": "img216.jpg",
+    "title": "Sculpted Brow & Siren Eye Drama",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Sculpted Brow & Siren Eye Drama by Upasana Kumari"
+  },
+  {
+    "id": "client-43",
+    "file": "img217.jpg",
+    "title": "Sunset Gold Bridal Portrait",
+    "cat": "Precision Nails & Detail",
+    "alt": "Sunset Gold Bridal Portrait by Upasana Kumari"
+  },
+  {
+    "id": "client-44",
+    "file": "img218.jpg",
+    "title": "Sleek Editorial Wet-Hair Couture",
+    "cat": "Bridal Couture",
+    "alt": "Sleek Editorial Wet-Hair Couture by Upasana Kumari"
+  },
+  {
+    "id": "client-45",
+    "file": "img219.jpg",
+    "title": "Regal Velvet Lehenga Symphony",
+    "cat": "Royal Reception",
+    "alt": "Regal Velvet Lehenga Symphony by Upasana Kumari"
+  },
+  {
+    "id": "client-46",
+    "file": "img220.jpg",
+    "title": "Golden Ochre Haldi Radiance",
+    "cat": "Editorial Glamour",
+    "alt": "Golden Ochre Haldi Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-47",
+    "file": "img221.jpg",
+    "title": "Sculpted 3D Jewel Encrusted Nails",
+    "cat": "Traditional & Draping",
+    "alt": "Sculpted 3D Jewel Encrusted Nails by Upasana Kumari"
+  },
+  {
+    "id": "client-48",
+    "file": "img222.jpg",
+    "title": "Modern Classic Red Lip Precision",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Modern Classic Red Lip Precision by Upasana Kumari"
+  },
+  {
+    "id": "client-49",
+    "file": "img223.jpg",
+    "title": "Airbrushed Porcelain Perfection",
+    "cat": "Precision Nails & Detail",
+    "alt": "Airbrushed Porcelain Perfection by Upasana Kumari"
+  },
+  {
+    "id": "client-50",
+    "file": "img224.jpg",
+    "title": "Ethereal Sheer Veil Radiance",
+    "cat": "Bridal Couture",
+    "alt": "Ethereal Sheer Veil Radiance by Upasana Kumari"
+  },
+  {
+    "id": "client-51",
+    "file": "img225.jpg",
+    "title": "High-Fashion Metallic Accent",
+    "cat": "Royal Reception",
+    "alt": "High-Fashion Metallic Accent by Upasana Kumari"
+  },
+  {
+    "id": "client-52",
+    "file": "img226.jpg",
+    "title": "Traditional Silk Dupatta Perfection",
+    "cat": "Editorial Glamour",
+    "alt": "Traditional Silk Dupatta Perfection by Upasana Kumari"
+  },
+  {
+    "id": "client-53",
+    "file": "img227.jpg",
+    "title": "Sultry Smokey Eye Contour",
+    "cat": "Traditional & Draping",
+    "alt": "Sultry Smokey Eye Contour by Upasana Kumari"
+  },
+  {
+    "id": "client-54",
+    "file": "img228.jpg",
+    "title": "Golden Peacock Eye Artistry",
+    "cat": "Eye Architecture & SFX",
+    "alt": "Golden Peacock Eye Artistry by Upasana Kumari"
+  },
+  {
+    "id": "client-55",
+    "file": "img229.jpg",
+    "title": "Contemporary Cocktail Saree Glow",
+    "cat": "Precision Nails & Detail",
+    "alt": "Contemporary Cocktail Saree Glow by Upasana Kumari"
+  },
+  {
+    "id": "client-56",
+    "file": "img230.jpg",
+    "title": "Flawless HD Bridal Airbrushing",
+    "cat": "Bridal Couture",
+    "alt": "Flawless HD Bridal Airbrushing by Upasana Kumari"
+  },
+  {
+    "id": "client-57",
+    "file": "img231.jpg",
+    "title": "Grandeur Heritage Bridal Splendor",
+    "cat": "Royal Reception",
+    "alt": "Grandeur Heritage Bridal Splendor by Upasana Kumari"
+  },
+  {
+    "id": "client-58",
+    "file": "img235.jpg",
+    "title": "Couture Runway Beauty Masterclass",
+    "cat": "Editorial Glamour",
+    "alt": "Couture Runway Beauty Masterclass by Upasana Kumari"
+  },
+  {
+    "id": "client-59",
+    "file": "img239.jpg",
+    "title": "Signature UK International Finale",
+    "cat": "Traditional & Draping",
+    "alt": "Signature UK International Finale by Upasana Kumari"
+  }
+]
