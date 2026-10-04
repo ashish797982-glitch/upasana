@@ -1794,7 +1794,7 @@ footer {
 .rg-stage-wrapper {
   position: relative;
   width: 100%;
-  height: 440px;
+  height: 530px;
   margin: 0 auto;
   overflow: hidden;
   cursor: grab;
@@ -2393,4 +2393,104 @@ footer {
 @keyframes rgOrbitSlow {
   from { transform: translateX(-50%) rotateX(75deg) rotate(0deg); }
   to { transform: translateX(-50%) rotateX(75deg) rotate(360deg); }
+}
+
+/* FLOATING STAGE NAVIGATION ARROWS */
+.rg-stage-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(16, 18, 32, 0.88);
+  border: 1px solid var(--line);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.rg-stage-nav:hover {
+  background: var(--gold);
+  color: #05060d;
+  box-shadow: 0 0 24px var(--gold-glow);
+  transform: translateY(-50%) scale(1.1);
+  border-color: var(--gold);
+}
+
+.rg-stage-nav-prev { left: 24px; }
+.rg-stage-nav-next { right: 24px; }
+
+/* QUICK THUMBNAIL ACCESS RAIL */
+.rg-bottom-rail {
+  max-width: 1440px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rg-rail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 11px var(--m);
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rg-active-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.rg-rail-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 4px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.rg-rail-thumb {
+  flex-shrink: 0;
+  width: 58px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line-light);
+  background: rgba(16, 18, 32, 0.8);
+  cursor: pointer;
+  opacity: 0.45;
+  transition: all 0.25s;
+}
+
+.rg-rail-thumb:hover {
+  opacity: 0.9;
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.rg-rail-thumb.active {
+  opacity: 1;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 16px var(--gold-glow);
+  transform: translateY(-4px) scale(1.08);
+}
+
+.rg-rail-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
