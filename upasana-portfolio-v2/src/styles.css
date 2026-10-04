@@ -1558,7 +1558,7 @@ footer {
 .rolling-gallery-section {
   position: relative;
   width: 100%;
-  padding: 120px 4vw 80px;
+  padding: 60px 4vw 40px;
   background: radial-gradient(circle at 50% 25%, rgba(217, 169, 58, 0.08) 0%, rgba(5, 6, 13, 0.98) 75%);
   overflow: hidden;
   user-select: none;
@@ -1595,7 +1595,7 @@ footer {
 }
 
 .rg-heading {
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(26px, 3.8vw, 42px);
   line-height: 1.08;
   margin: 0 0 16px;
 }
@@ -1794,7 +1794,7 @@ footer {
 .rg-stage-wrapper {
   position: relative;
   width: 100%;
-  height: 490px;
+  height: 370px;
   margin: 0 auto;
   overflow: hidden;
   cursor: grab;
@@ -2324,7 +2324,7 @@ footer {
     align-items: flex-start;
   }
   .rg-stage-wrapper {
-    height: 520px;
+    height: 320px;
   }
   .rg-cylinder-card {
     height: 250px;

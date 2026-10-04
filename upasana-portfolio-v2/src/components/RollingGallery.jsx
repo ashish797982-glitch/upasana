@@ -33,7 +33,7 @@ export default function RollingGallery({ onSelectLook }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [direction, setDirection] = useState(1);
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const [tilt, setTilt] = useState({ x: -2.5, y: 0, z: 0 });
+  const [tilt, setTilt] = useState({ x: -2, y: 0, z: 0 });
   const [activeModalLook, setActiveModalLook] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
@@ -47,23 +47,25 @@ export default function RollingGallery({ onSelectLook }) {
   const audioCtxRef = useRef(null);
   const lastTickCardRef = useRef(-1);
 
-  // Medium dimensions calibrated for ergonomic finger swiping and clear visibility
-  const [cardWidth, setCardWidth] = useState(170);
+  // TRUE MEDIUM SIZE: compact, ergonomic, fits comfortably in viewport
+  const [cardWidth, setCardWidth] = useState(135);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setCardWidth(130);
+        setCardWidth(95);
       } else if (window.innerWidth < 1024) {
-        setCardWidth(150);
+        setCardWidth(115);
       } else {
-        setCardWidth(170);
+        setCardWidth(135);
       }
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const cardHeight = Math.round(cardWidth * 1.42);
 
   const filteredImages = useMemo(() => {
     return clientData.filter((item) => {
@@ -81,9 +83,9 @@ export default function RollingGallery({ onSelectLook }) {
 
   // Medium cylinder radius
   const radius = useMemo(() => {
-    if (totalCards <= 1) return 380;
+    if (totalCards <= 1) return 320;
     const rad = (cardWidth / 2) / Math.tan(Math.PI / totalCards);
-    return Math.max(380, Math.min(1500, Math.round(rad) + 15));
+    return Math.max(340, Math.min(1300, Math.round(rad) + 10));
   }, [totalCards, cardWidth]);
 
   // Audio tick via Web Audio API
@@ -113,17 +115,17 @@ export default function RollingGallery({ onSelectLook }) {
   }, [soundEnabled]);
 
   // Continuous slow, smooth rolling animation:
-  // - Obeys its own rolling axis in slow smooth motion (~0.095 deg/frame)
+  // - Obeys its own rolling axis in slow smooth motion (~0.09 deg/frame)
   // - Any visitor can roll/swipe with fingers or mouse cursor
   // - When released, smoothly blends back into its own rolling axis with zero stops
   useEffect(() => {
     let animId;
-    const baseSpeed = 0.095 * direction; // Slow, luxurious, continuous cinematic pace
+    const baseSpeed = 0.09 * direction; // Slow, luxurious, continuous pace
 
     const loop = (stamp) => {
       // Dynamic organic wave along rolling axis for rich 3D life
-      const waveX = -2.2 + Math.sin(stamp * 0.0006) * 1.8;
-      const waveZ = Math.cos(stamp * 0.0004) * 1.4;
+      const waveX = -2 + Math.sin(stamp * 0.0006) * 1.5;
+      const waveZ = Math.cos(stamp * 0.0004) * 1.2;
 
       if (isDraggingRef.current) {
         // Visitor is actively swiping with finger or dragging with mouse
@@ -176,7 +178,7 @@ export default function RollingGallery({ onSelectLook }) {
         const rect = stageRef.current.getBoundingClientRect();
         const offsetX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
         const offsetY = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-        setTilt((t) => ({ ...t, userX: -offsetY * 2.5, userY: offsetX * 2.5 }));
+        setTilt((t) => ({ ...t, userX: -offsetY * 2, userY: offsetX * 2 }));
       }
       return;
     }
@@ -266,20 +268,19 @@ export default function RollingGallery({ onSelectLook }) {
       role="region"
       aria-roledescription="carousel"
     >
-      {/* SECTION HEADER */}
+      {/* COMPACT SECTION HEADER */}
       <div className="rg-header">
         <div className="rg-title-block">
           <div className="rg-badge-pill">
-            <Sparkles size={13} color="var(--gold-light)" />
+            <Sparkles size={12} color="var(--gold-light)" />
             <span>ALL LOOKS ARCHIVE • 59 MASTERPIECES IN 3D MOTION</span>
           </div>
           <h2 className="rg-heading">
-            <span className="s">All Signature Looks.</span>
-            <br />
-            <span className="g">Rolling Circular Motion.</span>
+            <span className="s">All Signature Looks.</span>{' '}
+            <span className="g">Rolling 3D Motion.</span>
           </h2>
           <p className="rg-subtitle">
-            All 59 authentic client looks rolling in slow, continuous smooth motion. Anyone can swipe with fingers or mouse cursor to roll freely in any direction.
+            All 59 authentic client looks rolling in slow, continuous smooth motion. Swipe with your fingers or mouse cursor to roll freely in any direction.
           </p>
         </div>
 
@@ -292,7 +293,7 @@ export default function RollingGallery({ onSelectLook }) {
               aria-label="Roll previous look"
               title="Roll Previous (Left Arrow)"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft size={15} />
             </button>
 
             <button 
@@ -301,7 +302,7 @@ export default function RollingGallery({ onSelectLook }) {
               aria-label="Roll next look"
               title="Roll Next (Right Arrow)"
             >
-              <ChevronRight size={16} />
+              <ChevronRight size={15} />
             </button>
 
             <button 
@@ -310,7 +311,7 @@ export default function RollingGallery({ onSelectLook }) {
               aria-label="Reverse rolling direction"
               title="Reverse Direction"
             >
-              {direction === 1 ? <RotateCw size={15} /> : <RotateCcw size={15} />}
+              {direction === 1 ? <RotateCw size={14} /> : <RotateCcw size={14} />}
             </button>
 
             <button 
@@ -319,7 +320,7 @@ export default function RollingGallery({ onSelectLook }) {
               aria-label={soundEnabled ? 'Disable haptic sound' : 'Enable haptic sound'}
               title={soundEnabled ? 'Sound Enabled' : 'Sound Muted'}
             >
-              {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
+              {soundEnabled ? <Volume2 size={14} /> : <VolumeX size={14} />}
             </button>
           </div>
         </div>
@@ -349,7 +350,7 @@ export default function RollingGallery({ onSelectLook }) {
         </div>
 
         <div className="rg-search-box">
-          <Search size={14} color="var(--muted)" />
+          <Search size={13} color="var(--muted)" />
           <input 
             type="text" 
             placeholder="Search all 59 looks..." 
@@ -365,7 +366,7 @@ export default function RollingGallery({ onSelectLook }) {
         </div>
       </div>
 
-      {/* 3D CIRCULAR ROLLING STAGE (MEDIUM SIZE) */}
+      {/* 3D CIRCULAR ROLLING STAGE (AUTHENTIC MEDIUM SIZE) */}
       <div 
         className="rg-stage-wrapper"
         ref={stageRef}
@@ -381,23 +382,24 @@ export default function RollingGallery({ onSelectLook }) {
         <div 
           className="rg-pedestal-ring" 
           style={{ 
-            width: Math.min(radius * 1.85, 1200) + 'px', 
-            height: Math.min(radius * 1.85, 1200) + 'px' 
+            width: '600px', 
+            height: '600px' 
           }} 
         />
 
         <div 
           className="rg-cylinder-stage"
           style={{
-            perspective: Math.max(1050, radius * 1.35) + 'px'
+            perspective: '1000px'
           }}
         >
+          {/* CRITICAL 3D FIX: translateZ(-radius - 35px) pushes the ring back so the front card sits at Z=0 (natural medium scale 1.0) instead of expanding into viewer's face */}
           <div 
             className="rg-cylinder-ring"
             style={{
               width: cardWidth + 'px',
-              height: Math.round(cardWidth * 1.45) + 'px',
-              transform: 'rotateX(' + tilt.x + 'deg) rotateZ(' + tilt.z + 'deg) rotateY(' + currentAngle + 'deg)',
+              height: cardHeight + 'px',
+              transform: 'translateZ(-' + (radius + 35) + 'px) rotateX(' + tilt.x + 'deg) rotateZ(' + tilt.z + 'deg) rotateY(' + currentAngle + 'deg)',
               transition: isDraggingRef.current ? 'none' : 'transform 0.05s ease-out'
             }}
           >
@@ -407,10 +409,13 @@ export default function RollingGallery({ onSelectLook }) {
               const rad = (relAngle * Math.PI) / 180;
               const cosA = Math.cos(rad);
               const isFront = cosA > 0;
-              const isCenter = Math.abs(relAngle) < 14;
+              const isCenter = Math.abs(relAngle) < 12;
 
-              const opacity = cosA > 0.1 ? 0.5 + cosA * 0.5 : Math.max(0.12, 0.5 + cosA * 0.45);
-              const scale = isCenter ? 1.06 : 1;
+              // Only render cards that face forward or side for pristine 120fps performance
+              if (cosA < -0.1) return null;
+
+              const opacity = cosA > 0.1 ? 0.55 + cosA * 0.45 : Math.max(0.12, 0.55 + cosA * 0.45);
+              const scale = isCenter ? 1.05 : 1;
 
               return (
                 <div
@@ -418,10 +423,10 @@ export default function RollingGallery({ onSelectLook }) {
                   className={'rg-cylinder-card ' + (isCenter ? 'is-center ' : '') + (isFront ? 'is-front ' : 'is-back ')}
                   style={{
                     width: cardWidth + 'px',
-                    height: Math.round(cardWidth * 1.45) + 'px',
+                    height: cardHeight + 'px',
                     transform: 'rotateY(' + baseAngle + 'deg) translateZ(' + radius + 'px) scale(' + scale + ')',
                     opacity: opacity,
-                    filter: !isFront ? 'blur(1.5px) brightness(0.65)' : isCenter ? 'brightness(1.1)' : 'none'
+                    filter: !isFront ? 'blur(1.2px) brightness(0.68)' : isCenter ? 'brightness(1.08)' : 'none'
                   }}
                   onClick={() => handleCardClick(item, index)}
                   role="button"
@@ -449,7 +454,7 @@ export default function RollingGallery({ onSelectLook }) {
                       </div>
                       <h4 className="rg-card-title">{item.title}</h4>
                       <div className="rg-card-inspect-hint">
-                        <Eye size={11} /> <span>CINEMA VIEW</span>
+                        <Eye size={10} /> <span>CINEMA VIEW</span>
                       </div>
                     </div>
 
@@ -462,8 +467,8 @@ export default function RollingGallery({ onSelectLook }) {
         </div>
 
         <div className="rg-drag-hint">
-          <MoveHorizontal size={13} color="var(--gold)" />
-          <span>SWIPE FINGERS OR DRAG CURSOR TO ROLL • CLICK LOOK TO ENLARGE</span>
+          <MoveHorizontal size={12} color="var(--gold)" />
+          <span>SWIPE FINGERS OR DRAG CURSOR TO ROLL • CLICK TO ENLARGE</span>
         </div>
       </div>
 
@@ -496,7 +501,7 @@ export default function RollingGallery({ onSelectLook }) {
                   title="Toggle Zoom Level (1x / 1.75x / 2.5x)"
                   aria-label="Toggle Zoom"
                 >
-                  {zoomLevel > 1 ? <ZoomOut size={16} /> : <ZoomIn size={16} />}
+                  {zoomLevel > 1 ? <ZoomOut size={15} /> : <ZoomIn size={15} />}
                   <span>{zoomLevel}x</span>
                 </button>
 
@@ -509,7 +514,7 @@ export default function RollingGallery({ onSelectLook }) {
                   }}
                 >
                   <span>RESERVE THIS LOOK</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={13} />
                 </a>
 
                 <button 
@@ -518,7 +523,7 @@ export default function RollingGallery({ onSelectLook }) {
                   aria-label="Close lightbox (Esc)"
                   title="Close (Esc)"
                 >
-                  <X size={18} />
+                  <X size={17} />
                 </button>
               </div>
             </div>
@@ -530,7 +535,7 @@ export default function RollingGallery({ onSelectLook }) {
                 aria-label="Previous client look (Left Arrow)"
                 title="Previous Look (Left Arrow)"
               >
-                <ChevronLeft size={28} />
+                <ChevronLeft size={26} />
               </button>
 
               <div 
@@ -556,7 +561,7 @@ export default function RollingGallery({ onSelectLook }) {
                 aria-label="Next client look (Right Arrow)"
                 title="Next Look (Right Arrow)"
               >
-                <ChevronRight size={28} />
+                <ChevronRight size={26} />
               </button>
             </div>
 
