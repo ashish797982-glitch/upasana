@@ -324,8 +324,7 @@ function App() {
   const [lightbox, setLightbox] = useState(null);
   const [selectedService, setSelectedService] = useState('Bridal Haute Couture');
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
-
+  
   const videoRef = useRef(null);
   const workRef = useRef(null);
   const tlRef = useRef(null);
@@ -384,18 +383,7 @@ function App() {
     return () => ctx.revert();
   }, []);
 
-  // Toggle Video Playback
-  const toggleVideo = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
+  
   const heroLines = [
     { text: 'I CREATE', style: 's' },
     { text: 'BEAUTY.', style: 'g' },
@@ -456,11 +444,10 @@ function App() {
         {/* Golden Backlight Aura Behind Walking Model */}
         <div className="model-aura" />
 
-        {/* Live Lookbook Video Reel Tag */}
-        <div className="video-tag" onClick={toggleVideo} style={{ cursor: 'pointer' }}>
+        {/* Live Editorial Motion Reel (Continuous Playback) */}
+        <div className="video-tag">
           <span className="live-dot" />
-          <span>CINEMATIC REEL // 24 FPS</span>
-          {isPlaying ? <Pause size={12} /> : <Play size={12} />}
+          <span>EDITORIAL MOTION // 4K CINEMA</span>
         </div>
 
         {/* Foreground Editorial Hero Content */}

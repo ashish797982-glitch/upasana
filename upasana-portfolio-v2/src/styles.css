@@ -1794,7 +1794,7 @@ footer {
 .rg-stage-wrapper {
   position: relative;
   width: 100%;
-  height: 680px;
+  height: 480px;
   margin: 0 auto;
   overflow: hidden;
   cursor: grab;
@@ -1857,8 +1857,6 @@ footer {
 
 .rg-cylinder-ring {
   position: absolute;
-  width: 220px;
-  height: 330px;
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -1867,7 +1865,6 @@ footer {
   position: absolute;
   top: 0;
   left: 0;
-  height: 330px;
   transform-style: preserve-3d;
   cursor: pointer;
   backface-visibility: hidden;
