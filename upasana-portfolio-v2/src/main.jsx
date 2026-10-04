@@ -17,7 +17,9 @@ import {
   Mail,
   Phone,
   Play,
-  Pause
+  Pause,
+  Award,
+  Trophy
 } from 'lucide-react';
 import './styles.css';
 
@@ -31,7 +33,7 @@ const NAV = ['About', 'Work', 'Skills', 'Journey', 'Contact'];
 
 const STATS = [
   { val: '150+', label: 'Looks Curated', detail: 'Bridal & High Fashion' },
-  { val: '5+', label: 'Years Artistry', detail: 'Master Certification' },
+  { val: '5+', label: 'Years Artistry', detail: 'UK International Certified' },
   { val: '100%', label: 'Bespoke Design', detail: 'Tailored Feature Analysis' },
   { val: '24K', label: 'Golden Standard', detail: 'Camera-Ready Precision' }
 ];
@@ -137,19 +139,19 @@ const JOURNEY = [
   {
     period: '2025 — Present',
     role: 'Principal Makeup & SFX Artist',
-    loc: 'Atelier Upasana',
-    desc: 'Leading bespoke bridal commissions, fashion editorial shoots, and high-concept creative transformations across private clients and creative agencies.'
+    loc: 'Atelier Upasana Kumari',
+    desc: 'Leading bespoke bridal commissions, high-fashion editorial campaigns, and conceptual creative transformations for distinguished private clients and creative agencies.'
   },
   {
     period: '2023 — 2025',
-    role: 'Master Certifications & Specializations',
-    loc: 'Advanced Artistry Academies',
-    desc: 'Intensive mastery in prosthetic SFX, HD bridal airbrush technologies, advanced color theory, and Russian-technique precision nail architecture.'
+    role: 'UK International London Beauty School',
+    loc: 'Award Winner & Master Certification',
+    desc: 'Honored with the prestigious UK International London Beauty School award for outstanding technical artistry, prosthetic SFX mastery, HD bridal airbrushing, and international editorial standards.'
   },
   {
     period: '2020 — 2023',
     role: 'Editorial Collaborations & Runway',
-    loc: 'Fashion & Private Clients',
+    loc: 'Fashion, Studio & Private Clients',
     desc: 'Delivered transformative beauty looks for runway models, commercial lookbooks, portfolio collaborations, and prestigious bridal party engagements.'
   }
 ];
@@ -605,10 +607,10 @@ function App() {
           </motion.div>
 
           <motion.p {...R(0.2)}>
-            I am <b>{NAME}</b>, a bridal couture, editorial SFX, and precision beauty designer. With rigorous training in cosmetic chemistry, lighting physics, and facial topography, every stroke is calibrated to look breathtaking both in intimate presence and under 8K high-definition cinema lenses.
+            I am <b>{NAME}</b>, an award-winning bridal couture, editorial SFX, and precision beauty artist certified by the prestigious <b>UK International London Beauty School</b>. With rigorous discipline in cosmetic chemistry, facial ergonomics, and studio optics, every stroke is calibrated to look breathtaking both in intimate presence and under 8K high-definition cinema lenses.
           </motion.p>
           <motion.p {...R(0.25)}>
-            Whether curating royal multi-day traditional weddings, crafting fantasy prosthetic sculptures for conceptual shoots, or tailoring bespoke glass-skin aesthetics, my craft is defined by an obsession with enduring elegance and uncompromising detail.
+            Whether curating royal multi-day traditional weddings, crafting fantasy prosthetic sculptures for conceptual shoots, or tailoring bespoke glass-skin aesthetics, my craft is defined by an obsession with enduring elegance, structural balance, and uncompromising detail.
           </motion.p>
 
           <motion.div className="stats" {...R(0.3)}>
@@ -629,11 +631,23 @@ function App() {
           viewport={{ once: true, amount: 0.3 }} 
           transition={{ duration: 1.1, ease: easeExpo }}
         >
-          <div className="frame-inner">
-            <img src="/images/portfolio-07.jpg" alt={`${NAME} Editorial Portrait`} />
+          <div 
+            className="frame-inner"
+            onClick={() => setLightbox({ src: '/images/upasana.jpg', title: 'Upasana Kumari — UK International London Beauty School Award Winner' })}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="frame-award-pill">
+              <Trophy size={13} color="var(--gold-light)" />
+              <span>AWARD WINNER · UK INTERNATIONAL</span>
+            </div>
+            <img 
+              src="/images/upasana.jpg" 
+              alt={`${NAME} — UK International London Beauty School Award Winner`}
+              style={{ objectPosition: 'center 12%' }}
+            />
             <div className="frame-caption">
               <span>UPASANA KUMARI</span>
-              <span>ATELIER MASTER // 2025</span>
+              <span>LONDON BEAUTY SCHOOL // AWARD WINNER</span>
             </div>
           </div>
         </motion.div>
