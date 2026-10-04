@@ -337,14 +337,17 @@ function CinematicDust() {
     };
     window.addEventListener('resize', handleResize);
 
-    const particles = Array.from({ length: 48 }, () => ({
+    // Multi-depth particle layers (foreground embers, midground dust, background stars)
+    const particles = Array.from({ length: 56 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2 + 0.8,
-      speedY: Math.random() * 0.35 + 0.12,
-      speedX: (Math.random() - 0.5) * 0.2,
-      opacity: Math.random() * 0.5 + 0.2,
-      pulse: Math.random() * Math.PI
+      size: Math.random() * 2.2 + 0.6,
+      speedY: Math.random() * 0.38 + 0.1,
+      speedX: (Math.random() - 0.5) * 0.22,
+      opacity: Math.random() * 0.55 + 0.25,
+      pulse: Math.random() * Math.PI,
+      pulseSpeed: Math.random() * 0.03 + 0.015,
+      hueOffset: Math.random() * 15
     }));
 
     const render = () => {
@@ -352,17 +355,17 @@ function CinematicDust() {
       particles.forEach((p) => {
         p.y -= p.speedY;
         p.x += p.speedX;
-        p.pulse += 0.02;
-        if (p.y < -10) p.y = height + 10;
-        if (p.x < -10) p.x = width + 10;
-        if (p.x > width + 10) p.x = -10;
+        p.pulse += p.pulseSpeed;
+        if (p.y < -12) p.y = height + 12;
+        if (p.x < -12) p.x = width + 12;
+        if (p.x > width + 12) p.x = -12;
 
-        const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+        const currentOpacity = p.opacity * (0.65 + 0.35 * Math.sin(p.pulse));
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(217, 169, 58, ' + currentOpacity + ')';
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = 'rgba(217, 169, 58, 0.4)';
+        ctx.fillStyle = 'rgba(' + (217 + p.hueOffset) + ', 175, 65, ' + currentOpacity + ')';
+        ctx.shadowBlur = p.size > 1.8 ? 12 : 6;
+        ctx.shadowColor = 'rgba(217, 169, 58, 0.45)';
         ctx.fill();
       });
       animId = requestAnimationFrame(render);
