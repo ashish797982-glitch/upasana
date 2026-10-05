@@ -232,24 +232,17 @@ function Cursor() {
 }
 
 /* ==========================================================================
-   3D STACKED WORK CARD COMPONENT
+   CURATED WORK CARD COMPONENT (SMOOTH FLOWING LUXURY CARDS)
    ========================================================================== */
-function WorkCard({ w, i, total, prog, onSelectImage }) {
-  const start = i / total;
-  const end = (i + 1) / total;
-  const scale = useTransform(prog, [start, end], [1, 0.94]);
-  const opacity = useTransform(prog, [start, end], [1, 0.65]);
-  const y = useTransform(prog, [start, end], [0, -10]);
-
+function WorkCard({ w, i, total, onSelectImage }) {
   return (
-    <div className="stack-item" style={{ top: 110 + i * 22 }}>
+    <div className="work-card-wrapper">
       <motion.div 
         className="card" 
-        style={{ 
-          scale, 
-          opacity: i === total - 1 ? 1 : opacity,
-          y
-        }}
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         whileHover={{ y: -6, transition: { duration: 0.3 } }}
       >
         <div>
@@ -396,26 +389,24 @@ function App() {
   const tlRef = useRef(null);
   const heroRef = useRef(null);
 
-  // Lenis Luxury Inertial Smooth Scrolling System
+  // Lenis Luxury Inertial Smooth Scrolling System (Silky, Butter-Smooth Motion)
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 1.25,
       touchMultiplier: 1.6,
+      autoRaf: true,
+      infinite: false,
     });
     lenisRef.current = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    const raf = (time) => {
-      lenis.raf(time * 1000);
-    };
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
-
-        // Smooth anchor navigation for all internal hashes
+    // Smooth anchor navigation for all internal hashes
     const handleAnchorClick = (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (a) {
@@ -427,7 +418,7 @@ function App() {
           e.preventDefault();
           const target = document.querySelector(href);
           if (target) {
-            lenis.scrollTo(target, { offset: -60, duration: 1.35 });
+            lenis.scrollTo(target, { offset: -60, duration: 1.25 });
           }
         }
       }
@@ -436,7 +427,6 @@ function App() {
 
     return () => {
       document.removeEventListener('click', handleAnchorClick);
-      gsap.ticker.remove(raf);
       lenis.destroy();
     };
   }, []);
@@ -770,7 +760,13 @@ function App() {
         >
           <div 
             className="frame-inner"
-            onClick={() => setLightbox({ src: '/images/upasana.jpg', title: 'Upasana Kumari — UK International London Beauty School Award Winner' })}
+            
+onClick={() =>
+  openMasterLightbox(
+    '/images/upasana.jpg',
+    'Upasana Kumari — UK International London Beauty School Award Winner'
+  )
+}
             style={{ cursor: 'pointer' }}
           >
             <div className="frame-award-pill">
@@ -814,7 +810,6 @@ function App() {
             w={w} 
             i={i} 
             total={WORKS.length} 
-            prog={wp} 
             onSelectImage={(img, title) => openMasterLightbox(img, title)}
           />
         ))}
@@ -905,10 +900,39 @@ function App() {
 
         <motion.form 
           {...R(0.25)} 
-          onSubmit={(e) => {
-            e.preventDefault();
-            setFormSubmitted(true);
-          }}
+          
+onSubmit={(e) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const data = new FormData(form);
+
+  const name = data.get('name')?.toString().trim() || 'Not provided';
+  const email = data.get('email')?.toString().trim() || 'Not provided';
+  const eventDetails =
+    data.get('event_details')?.toString().trim() || 'Not provided';
+  const notes = data.get('message')?.toString().trim() || 'No additional notes';
+
+  const message = [
+    '✨ NEW RESERVATION REQUEST',
+    '',
+    'Hello Upasana! I would like to enquire about a reservation.',
+    '',
+    `Service: ${selectedService}`,
+    `Name / Agency: ${name}`,
+    `Email: ${email}`,
+    `Celebration Date & City / Venue: ${eventDetails}`,
+    `Vision & Notes: ${notes}`,
+    '',
+    'Please let me know your availability and booking details.',
+  ].join('\n');
+
+  const whatsappURL =
+    `https://wa.me/917352651762?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+}}
+
         >
           {formSubmitted ? (
             <div style={{ textAlign: 'center', padding: '40px 20px' }}>
@@ -1005,13 +1029,13 @@ function App() {
           ========================================================================== */}
       <footer>
         <div className="footer-socials">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
+          <a href="https://www.instagram.com/enhanced_by_upasana/" target="_blank" rel="noopener noreferrer" title="Instagram">
             <Instagram size={18} />
           </a>
-          <a href="mailto:upasana@example.com" title="Email Inquiries">
+          <a href="mailto:upasanaup1762@gmail.com" title="Email Inquiries">
             <Mail size={18} />
           </a>
-          <a href="tel:+919876543210" title="Direct Atelier Line">
+          <a href="tel:+917352651762" title="Direct Atelier Line">
             <Phone size={18} />
           </a>
         </div>
